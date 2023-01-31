@@ -14,6 +14,7 @@ androidxTestRules = "1.5.0"
 androidxTestRunner = "1.5.1"
 androidxUiAutomator = "2.2.0"
 coil = "2.2.2"
+forkHandlesBom = "2.3.0"
 hilt = "2.44.2"
 hiltExt = "1.0.0"
 junit4 = "4.13.2"
@@ -50,6 +51,8 @@ androidx-test-runner = { group = "androidx.test", name = "runner", version.ref =
 androidx-test-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "androidxUiAutomator" }
 coil-kt = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 coil-kt-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+forkhandles-bom = { group = "dev.forkhandles", name = "forkhandles-bom", version.ref = "forkHandlesBom" }
+result4k = { group = "dev.forkhandles", name = "result4k" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
@@ -58,7 +61,7 @@ kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", v
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
-kotest = {group = "io.kotest", name = "kotest-assertions-core", version.ref="kotest"}
+kotest = { group = "io.kotest", name = "kotest-assertions-core", version.ref = "kotest" }
 junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
 junit5-bom = { group = "org.junit", name = "junit-bom", version.ref = "junit5Bom" }
 junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter"}
