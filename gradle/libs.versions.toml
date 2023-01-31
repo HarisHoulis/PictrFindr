@@ -23,6 +23,7 @@ kotest = "5.5.4"
 kotlin = "1.8.0"
 kotlinxCoroutines = "1.6.4"
 kotlinxSerializationJson = "1.4.1"
+okhttp = "4.10.0"
 retrofit = "2.9.0"
 retrofitKotlinxSerializationJson = "0.8.0"
 room = "2.5.0-rc01"
@@ -64,7 +65,8 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 kotest = { group = "io.kotest", name = "kotest-assertions-core", version.ref = "kotest" }
 junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
 junit5-bom = { group = "org.junit", name = "junit-bom", version.ref = "junit5Bom" }
-junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter"}
+junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter" }
+okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-kotlin-serialization = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofitKotlinxSerializationJson" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
