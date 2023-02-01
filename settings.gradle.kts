@@ -17,3 +17,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "PictrFindr"
 include(":app")
+include(":feature:home")
+include(":core:network")
