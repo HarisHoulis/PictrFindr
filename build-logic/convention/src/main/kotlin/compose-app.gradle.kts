@@ -3,8 +3,6 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
-private val libs = project.extensions.getByType<VersionCatalogsExtension>().named("libs")
-
 android {
     namespace = "com.houlis.haris.pictrfindr"
     compileSdk = 33
