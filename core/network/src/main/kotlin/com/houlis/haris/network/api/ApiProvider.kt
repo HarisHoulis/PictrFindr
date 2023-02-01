@@ -15,7 +15,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ApiProvider @Inject constructor(json: Json) {
+internal class ApiProvider @Inject constructor(json: Json) {
 
     private companion object {
         private const val BASE_URL = ""
