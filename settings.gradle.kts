@@ -20,3 +20,4 @@ rootProject.name = "PictrFindr"
 include(":app")
 include(":feature:list")
 include(":core:network")
+include(":core:test")
