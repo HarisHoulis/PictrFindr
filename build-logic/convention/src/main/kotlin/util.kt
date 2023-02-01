@@ -13,3 +13,8 @@ internal val Project.libs: VersionCatalog
         .extensions
         .getByType<VersionCatalogsExtension>()
         .named("libs")
+
+/**
+ * Convenience fun to avoid calling [VersionCatalog.findLibrary.get]
+ */
+internal fun VersionCatalog.getLib(alias: String) = findLibrary(alias).get()
