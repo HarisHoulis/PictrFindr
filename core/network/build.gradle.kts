@@ -16,5 +16,8 @@ dependencies {
         implementation(retrofit.core)
         implementation(retrofit.kotlin.serialization)
         implementation(timber)
+        implementation(libs.result4k)
+
+        testImplementation(project(":core:test"))
     }
 }
