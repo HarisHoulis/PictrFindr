@@ -20,6 +20,7 @@ dependencies {
     api(libs.androidx.test.rules)
     api(libs.androidx.test.runner)
     api(libs.hilt.android.testing)
+    api(libs.kotest)
     api(libs.kotlinx.coroutines.test)
     api(libs.turbine)
 }
