@@ -1,6 +1,6 @@
 package com.houlis.haris.network.di
 
-import com.houlis.haris.network.api.ApiProvider
+import com.houlis.haris.network.data.ApiProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
