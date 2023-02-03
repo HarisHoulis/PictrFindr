@@ -12,9 +12,9 @@ dependencies {
     add("implementation", libs.getLib("coil.kt.compose"))
     add("implementation", libs.getLib("kotlinx.coroutines.android"))
 
-//    add("testImplementation", project(":core:test"))
+    add("testImplementation", project(":core:test"))
     add("testImplementation", kotlin("test"))
 
-//    add("androidTestImplementation", project(":core:test"))
+    add("androidTestImplementation", project(":core:test"))
     add("androidTestImplementation", kotlin("test"))
 }
