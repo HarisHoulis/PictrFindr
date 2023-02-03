@@ -6,7 +6,12 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.json.Json
+import javax.inject.Qualifier
 import javax.inject.Singleton
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class ImageBaseUrl
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -20,4 +25,8 @@ internal object NetworkModule {
 
     @Provides
     fun providesApi(apiProvider: ApiProvider) = apiProvider.api
+
+    @ImageBaseUrl
+    @Provides
+    fun providesImageBaseUrl() = "https://live.staticflickr.com/"
 }
