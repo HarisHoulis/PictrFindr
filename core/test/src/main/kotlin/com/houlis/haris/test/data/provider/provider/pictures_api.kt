@@ -1,26 +1,38 @@
 package com.houlis.haris.test.data.provider.provider
 
 import com.houlis.haris.network.data.model.PicturesResponseRaw
+import com.houlis.haris.network.data.model.PicturesResponseRaw.PicturesRaw
+import com.houlis.haris.network.data.model.PicturesResponseRaw.PicturesRaw.PictureRaw
 
-fun dummyPicturesResponseRaw() = PicturesResponseRaw(
-    PicturesResponseRaw.PicturesRaw(
-        listOf(
-            dummyPictureRawResponse1(),
-            dummyPictureRawResponse2()
-        )
+fun dummyPicturesResponseRaw(picturesRaw: List<PictureRaw> = listOf(dummyPictureRaw1(), dummyPictureRaw2())) =
+    PicturesResponseRaw(
+        PicturesRaw(picturesRaw)
     )
-)
 
-fun dummyPictureRawResponse1() = PicturesResponseRaw.PicturesRaw.PictureRaw(
+fun dummyPictureRaw1() = PictureRaw(
     id = "52663187230",
     secret = "3c0b1465a7",
     server = "65535",
     title = "Donat",
 )
 
-fun dummyPictureRawResponse2() = PicturesResponseRaw.PicturesRaw.PictureRaw(
+fun dummyPictureRaw2() = PictureRaw(
     id = "52662247857",
     secret = "acd1bfe3ab",
     server = "65535",
     title = "Donat",
+)
+
+fun dummyPictureRaw3() = PictureRaw(
+    id = "52663147230",
+    secret = "9c0b14s5a7",
+    server = "65535",
+    title = "Hole",
+)
+
+fun dummyPictureRaw4() = PictureRaw(
+    id = "52662247857",
+    secret = "acdssfe3ab",
+    server = "65535",
+    title = "Hole",
 )
