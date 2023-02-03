@@ -1,6 +1,6 @@
-package com.houlis.haris.home.api
+package com.houlis.haris.list.api
 
-import com.houlis.haris.home.domain.Picture
+import com.houlis.haris.list.domain.Picture
 import dev.forkhandles.result4k.Result4k
 
 interface PicturesRepositoryContract {
