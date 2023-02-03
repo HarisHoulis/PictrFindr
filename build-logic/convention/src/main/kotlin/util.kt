@@ -1,3 +1,7 @@
+@file:Suppress("UnstableApiUsage")
+
+import com.android.build.gradle.LibraryExtension
+import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
 import org.gradle.api.artifacts.VersionCatalogsExtension
@@ -18,3 +22,29 @@ internal val Project.libs: VersionCatalog
  * Convenience fun to avoid calling [VersionCatalog.findLibrary.get]
  */
 internal fun VersionCatalog.getLib(alias: String) = findLibrary(alias).get()
+
+/**
+ * Convenience method to configure Compose properties for [LibraryExtension]s
+ */
+fun LibraryExtension.configureCompose(project: Project) {
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = project.libs.findVersion("androidxComposeCompiler").get().toString()
+    }
+}
+
+/**
+ * Convenience method to configure Compose properties for [BaseAppModuleExtension]s
+ */
+fun BaseAppModuleExtension.configureCompose(project: Project) {
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = project.libs.findVersion("androidxComposeCompiler").get().toString()
+    }
+}
