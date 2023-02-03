@@ -3,8 +3,17 @@ plugins {
     id("android-hilt")
 }
 
+android {
+    configureCompose(project)
+}
+
 dependencies {
     add("implementation", project(":core:network"))
+    add("implementation", libs.getLib("androidx.compose.bom"))
+    add("implementation", libs.getLib("androidx.compose.foundation"))
+    add("implementation", libs.getLib("androidx.compose.foundation.layout"))
+    add("implementation", libs.getLib("androidx.compose.material3"))
+    add("implementation", libs.getLib("androidx.compose.ui"))
     add("implementation", libs.getLib("androidx.hilt.navigation.compose"))
     add("implementation", libs.getLib("androidx.lifecycle.runtimeCompose"))
     add("implementation", libs.getLib("androidx.lifecycle.viewModelCompose"))
