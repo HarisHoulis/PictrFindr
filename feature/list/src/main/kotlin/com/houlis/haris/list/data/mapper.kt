@@ -3,7 +3,7 @@ package com.houlis.haris.list.data
 import com.houlis.haris.list.domain.Picture
 import com.houlis.haris.network.data.model.PicturesResponseRaw
 
-fun PicturesResponseRaw.toDomain(imageBaseUrl: String): List<Picture> =
+internal fun PicturesResponseRaw.toDomain(imageBaseUrl: String): List<Picture> =
     pictures.picture.map { raw ->
         Picture(
             id = raw.id,
