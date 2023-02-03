@@ -5,10 +5,11 @@ import dev.forkhandles.result4k.Result4k
 import dev.forkhandles.result4k.Success
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 suspend fun <T> asResult(
-    dispatcher: CoroutineDispatcher,
+    dispatcher: CoroutineDispatcher = Dispatchers.IO,
     apiCall: suspend () -> T,
 ): Result4k<T, Exception> = suspendRunCatching {
     withContext(dispatcher) {
