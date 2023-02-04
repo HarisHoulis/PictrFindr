@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="init_message">Go search for sth!</string>
+    <string name="empty_list">No items were found. Please try again.</string>
+    <string name="error">Sth went wrong, please try again later.</string>
+    <string name="placeholder">Search…</string>
+</resources>
