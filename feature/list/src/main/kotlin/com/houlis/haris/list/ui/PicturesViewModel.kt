@@ -10,16 +10,19 @@ import dev.forkhandles.result4k.Success
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filterNot
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.time.Duration
 import javax.inject.Inject
 
 @HiltViewModel
 internal class PicturesViewModel @Inject constructor(
     private val repository: PicturesRepositoryContract,
+    private val inputDebounce: Duration,
 ) : ViewModel() {
 
     private val _state: MutableStateFlow<PicturesUiState> = MutableStateFlow(PicturesUiState())
@@ -33,6 +36,7 @@ internal class PicturesViewModel @Inject constructor(
         viewModelScope.launch {
             queryFLow
                 .filterNot(String::isEmpty)
+                .debounce(inputDebounce.toMillis())
                 .distinctUntilChanged()
                 .collectLatest { query ->
                     val newState = when (val result = repository.searchFor(query)) {
