@@ -2,10 +2,16 @@ package com.houlis.haris.list.ui
 
 import com.houlis.haris.list.domain.Picture
 
-sealed interface PicturesUiState {
-    data class Fetched(val pictures: List<Picture>) : PicturesUiState
+data class PicturesUiState(val input: String, val type: Type) {
 
-    object Loading : PicturesUiState
-    object Empty : PicturesUiState
-    object Error : PicturesUiState
+    companion object {
+        operator fun invoke() = PicturesUiState("", Type.Loading)
+    }
+
+    sealed interface Type {
+        data class Fetched(val pictures: List<Picture>) : Type
+        object Loading : Type
+        object Empty : Type
+        object Error : Type
+    }
 }
