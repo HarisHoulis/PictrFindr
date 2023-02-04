@@ -8,6 +8,7 @@ import com.houlis.haris.list.domain.dummyPicture4
 import com.houlis.haris.list.domain.dummyPictures
 import com.houlis.haris.list.ui.PicturesUiState.Type
 import com.houlis.haris.list.ui.PicturesUiState.Type.Fetched
+import com.houlis.haris.list.ui.PicturesUiState.Type.Initial
 import com.houlis.haris.list.ui.PicturesUiState.Type.Loading
 import com.houlis.haris.network.data.PicturesApi
 import com.houlis.haris.test.data.TestPicturesApi
@@ -44,9 +45,9 @@ internal class PicturesViewModelTest {
         )
 
     @Test
-    fun `initial state is loading`() = runTest {
+    fun `has initial state`() = runTest {
         testedClass().state.test {
-            awaitItem() shouldBe PicturesUiState("", Loading)
+            awaitItem() shouldBe PicturesUiState("", Initial)
             expectNoEvents()
         }
     }
@@ -64,7 +65,7 @@ internal class PicturesViewModelTest {
 
             // ASSERT
             awaitItem() shouldBe initialState
-            awaitItem() shouldBe initialState.copy(input = Query1.text)
+            awaitItem() shouldBe initialState.copy(Query1.text, Loading)
             awaitItem() shouldBe initialState.copy(Query1.text, expectedUiStateType)
             expectNoEvents()
         }
@@ -73,7 +74,7 @@ internal class PicturesViewModelTest {
     @Test
     fun `reduces state based on most recent query`() = runTest {
         // ARRANGE
-        val initialState = PicturesUiState("", Loading)
+        val initialState = PicturesUiState("", Initial)
         val testedClass = testedClass(debounce = Duration.ofMillis(10))
 
         // ACT
@@ -83,8 +84,8 @@ internal class PicturesViewModelTest {
 
             // ASSERT
             awaitItem() shouldBe initialState
-            awaitItem() shouldBe initialState.copy(input = Query1.text)
-            awaitItem() shouldBe initialState.copy(input = Query2.text)
+            awaitItem() shouldBe initialState.copy(input = Query1.text, Loading)
+            awaitItem() shouldBe initialState.copy(input = Query2.text, Loading)
             awaitItem() shouldBe initialState.copy(Query2.text, type = Fetched(listOf(dummyPicture3(), dummyPicture4())))
             expectNoEvents()
         }
