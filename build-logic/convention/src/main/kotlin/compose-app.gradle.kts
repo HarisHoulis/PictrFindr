@@ -28,29 +28,8 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-
-    kotlinOptions {
-        val warningsAsErrors: String? by project
-        allWarningsAsErrors = warningsAsErrors.toBoolean()
-        jvmTarget = JavaVersion.VERSION_11.toString()
-        freeCompilerArgs = freeCompilerArgs + listOf(
-            "-opt-in=kotlin.RequiresOptIn",
-            "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
-            "-opt-in=kotlinx.coroutines.FlowPreview",
-        )
-    }
-
     configureCompose(project)
-
-    testOptions {
-        unitTests.all {
-            it.useJUnitPlatform()
-        }
-    }
+    configureKotlin(project)
 }
 
 
