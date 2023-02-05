@@ -1,53 +1,46 @@
 package com.houlis.haris.feature.list.ui
 
 import app.cash.turbine.test
-import com.houlis.haris.feature.list.data.PicturesRepository
-import com.houlis.haris.feature.list.domain.IMAGE_BASE_URL
-import com.houlis.haris.feature.list.domain.dummyPicture3
-import com.houlis.haris.feature.list.domain.dummyPicture4
-import com.houlis.haris.feature.list.domain.dummyPictures
-import com.houlis.haris.feature.list.ui.PicturesUiState
+import com.houlis.haris.core.domain.PicturesRepositoryContract
 import com.houlis.haris.feature.list.ui.PicturesUiState.Type
 import com.houlis.haris.feature.list.ui.PicturesUiState.Type.Fetched
 import com.houlis.haris.feature.list.ui.PicturesUiState.Type.Initial
 import com.houlis.haris.feature.list.ui.PicturesUiState.Type.Loading
-import com.houlis.haris.feature.list.ui.PicturesViewModel
-import com.houlis.haris.network.data.PicturesApi
-import com.houlis.haris.test.data.TestPicturesApi
-import com.houlis.haris.test.data.TestPicturesApi.Query.Query1
-import com.houlis.haris.test.data.TestPicturesApi.Query.Query2
-import com.houlis.haris.test.extension.MainTestDispatcherExtension
+import com.houlis.haris.test.data.TestPicturesRepository
+import com.houlis.haris.test.data.TestPicturesRepository.Query.Query1
+import com.houlis.haris.test.data.TestPicturesRepository.Query.Query2
+import com.houlis.haris.test.domain.provider.dummyPicture3
+import com.houlis.haris.test.domain.provider.dummyPicture4
+import com.houlis.haris.test.domain.provider.dummyPictures
+import com.houlis.haris.test.util.runTestWithDispatcher
 import io.kotest.matchers.shouldBe
-import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.StandardTestDispatcher
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.time.Duration
 
-@ExtendWith(MainTestDispatcherExtension::class)
 internal class PicturesViewModelTest {
 
     companion object {
         @JvmStatic
-        fun `api to expected UI state`() = listOf(
-            Arguments.of(testPicturesApi(), Fetched(dummyPictures())),
-            Arguments.of(testPicturesApi().apply { setEmptyResponse() }, Type.Empty),
-            Arguments.of(testPicturesApi().apply { throwException() }, Type.Error),
+        fun `repo to expected UI state`() = listOf(
+            Arguments.of(testPicturesRepo(), Fetched(dummyPictures())),
+            Arguments.of(testPicturesRepo().apply { setEmptyResponse() }, Type.Empty),
+            Arguments.of(testPicturesRepo().apply { throwException() }, Type.Error),
         )
 
-        private fun testPicturesApi() = TestPicturesApi()
+        private fun testPicturesRepo() = TestPicturesRepository()
     }
 
-    private fun testedClass(api: PicturesApi = testPicturesApi(), debounce: Duration = Duration.ofMillis(0)) =
-        PicturesViewModel(
-            PicturesRepository(api, IMAGE_BASE_URL),
-            debounce
-        )
+    private fun testedClass(
+        repo: PicturesRepositoryContract = testPicturesRepo(),
+        debounce: Duration = Duration.ofMillis(0),
+    ) = PicturesViewModel(repo, debounce)
 
     @Test
-    fun `has initial state`() = runTest {
+    fun `has initial state`() = runTestWithDispatcher(StandardTestDispatcher()) {
         testedClass().state.test {
             awaitItem() shouldBe PicturesUiState("", Initial)
             expectNoEvents()
@@ -55,26 +48,27 @@ internal class PicturesViewModelTest {
     }
 
     @ParameterizedTest
-    @MethodSource("api to expected UI state")
-    fun `reduces state`(api: PicturesApi, expectedUiStateType: Type) = runTest {
-        // ARRANGE
-        val initialState = PicturesUiState()
-        val testedClass = testedClass(api)
+    @MethodSource("repo to expected UI state")
+    fun `reduces state`(repo: PicturesRepositoryContract, expectedUiStateType: Type) =
+        runTestWithDispatcher(StandardTestDispatcher()) {
+            // ARRANGE
+            val initialState = PicturesUiState()
+            val testedClass by lazy { testedClass(repo = repo) }
 
-        // ACT
-        testedClass.state.test {
-            testedClass.searchFor(Query1.text)
+            // ACT
+            testedClass.state.test {
+                testedClass.searchFor(Query1.text)
 
-            // ASSERT
-            awaitItem() shouldBe initialState
-            awaitItem() shouldBe initialState.copy(Query1.text, Loading)
-            awaitItem() shouldBe initialState.copy(Query1.text, expectedUiStateType)
-            expectNoEvents()
+                // ASSERT
+                awaitItem() shouldBe initialState
+                awaitItem() shouldBe initialState.copy(Query1.text, Loading)
+                awaitItem() shouldBe initialState.copy(Query1.text, expectedUiStateType)
+                expectNoEvents()
+            }
         }
-    }
 
     @Test
-    fun `reduces state based on most recent query`() = runTest {
+    fun `reduces state based on most recent query`() = runTestWithDispatcher(StandardTestDispatcher()) {
         // ARRANGE
         val initialState = PicturesUiState("", Initial)
         val testedClass = testedClass(debounce = Duration.ofMillis(10))
@@ -88,8 +82,16 @@ internal class PicturesViewModelTest {
             awaitItem() shouldBe initialState
             awaitItem() shouldBe initialState.copy(input = Query1.text, Loading)
             awaitItem() shouldBe initialState.copy(input = Query2.text, Loading)
-            awaitItem() shouldBe initialState.copy(Query2.text, type = Fetched(listOf(dummyPicture3(), dummyPicture4())))
+            awaitItem() shouldBe initialState.copy(
+                Query2.text, type = Fetched(
+                    listOf(
+                        dummyPicture3(),
+                        dummyPicture4()
+                    )
+                )
+            )
             expectNoEvents()
         }
     }
 }
+

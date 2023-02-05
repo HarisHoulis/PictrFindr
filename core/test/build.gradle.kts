@@ -10,8 +10,11 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:models"))
     implementation(project(":core:network"))
+    implementation(project(":core:domain"))
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.result4k)
 
     api(platform(libs.androidx.compose.bom))
     api(libs.androidx.compose.ui.test)

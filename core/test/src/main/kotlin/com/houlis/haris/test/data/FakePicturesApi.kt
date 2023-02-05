@@ -1,7 +1,7 @@
 package com.houlis.haris.test.data
 
-import com.houlis.haris.network.data.PicturesApi
-import com.houlis.haris.network.data.model.PicturesResponseRaw
+import com.houlis.haris.core.models.PicturesResponseRaw
+import com.houlis.haris.core.network.api.PicturesApi
 import com.houlis.haris.test.decode
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
