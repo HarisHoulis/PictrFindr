@@ -1,6 +1,7 @@
 package com.houlis.haris.feature.list.ui
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -36,20 +37,40 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
-import com.houlis.haris.feature.list.domain.Picture
+import com.houlis.haris.core.domain.Picture
+import com.houlis.haris.feature.list.R
 import com.houlis.haris.feature.list.ui.PicturesUiState.Type
-import com.houlis.haris.network.feature.list.R
 
 @Composable
-internal fun PicturesRoute(modifier: Modifier = Modifier, viewModel: PicturesViewModel = hiltViewModel()) {
+internal fun PicturesRoute(
+    modifier: Modifier = Modifier,
+    viewModel: PicturesViewModel = hiltViewModel(),
+    navigateToDetails: (picId: String) -> Unit,
+) {
     val uiState by viewModel.state.collectAsStateWithLifecycle()
-    PicturesScreen(uiState, modifier) {
+
+    uiState.navigateToDetails?.run {
+        navigateToDetails(picId)
+        viewModel.onNavigatedToDetails()
+    }
+
+    PicturesScreen(
+        uiState,
+        modifier,
+        { viewModel.onPictureClicked(it) }
+    ) {
         viewModel.searchFor(it)
     }
+
 }
 
 @Composable
-internal fun PicturesScreen(state: PicturesUiState, modifier: Modifier = Modifier, onValueChange: (String) -> Unit) {
+internal fun PicturesScreen(
+    state: PicturesUiState,
+    modifier: Modifier = Modifier,
+    onClick: (Picture) -> Unit,
+    onValueChange: (String) -> Unit,
+) {
     Column {
         Spacer(Modifier.height(16.dp))
         SearchBar(state.input, onValueChange = onValueChange)
@@ -59,7 +80,7 @@ internal fun PicturesScreen(state: PicturesUiState, modifier: Modifier = Modifie
             Type.Empty -> InfoItem(R.string.empty_list)
             Type.Error -> InfoItem(R.string.error)
             Type.Loading -> Loading()
-            is Type.Fetched -> PicturesList(uiState, modifier)
+            is Type.Fetched -> PicturesList(uiState, modifier, onClick)
         }
     }
 }
@@ -85,13 +106,13 @@ private fun Loading(modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun PicturesList(uiState: Type.Fetched, modifier: Modifier = Modifier) {
+private fun PicturesList(uiState: Type.Fetched, modifier: Modifier = Modifier, onClick: (Picture) -> Unit) {
     LazyColumn(
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(items = uiState.pictures) { picture ->
-            PictureItem(picture, modifier)
+            PictureItem(picture, modifier, onClick)
         }
     }
 }
@@ -123,8 +144,12 @@ private fun SearchBar(
 }
 
 @Composable
-private fun PictureItem(picture: Picture, modifier: Modifier = Modifier) {
-    Row(modifier = modifier) {
+private fun PictureItem(picture: Picture, modifier: Modifier = Modifier, onClick: (Picture) -> Unit) {
+    Row(
+        modifier = modifier.clickable {
+            onClick(picture)
+        }
+    ) {
         AsyncImage(
             model = picture.image.value,
             contentDescription = null,

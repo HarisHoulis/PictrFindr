@@ -6,8 +6,10 @@ import com.houlis.haris.feature.list.ui.PicturesRoute
 
 const val picturesRoute = "pictures_route"
 
-fun NavGraphBuilder.picturesGraph() {
+fun NavGraphBuilder.picturesScreen(navigateToDetails: (picId: String) -> Unit) {
     composable(route = picturesRoute) {
-        PicturesRoute()
+        PicturesRoute { picId ->
+            navigateToDetails(picId)
+        }
     }
 }

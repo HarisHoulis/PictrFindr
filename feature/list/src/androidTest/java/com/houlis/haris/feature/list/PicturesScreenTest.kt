@@ -17,7 +17,7 @@ class PicturesScreenTest {
 
     private fun launch(state: PicturesUiState = PicturesUiState()) {
         composeTestRule.setContent {
-            PicturesScreen(state = state, onValueChange = {})
+            PicturesScreen(state = state, onValueChange = {}, onClick = {})
         }
     }
 
