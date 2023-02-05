@@ -4,6 +4,7 @@ plugins {
 
 dependencies {
     implementation(project(":feature:list"))
+    implementation(project(":feature:details"))
 
     testImplementation(libs.junit5.bom)
     testImplementation(libs.junit.jupiter)
