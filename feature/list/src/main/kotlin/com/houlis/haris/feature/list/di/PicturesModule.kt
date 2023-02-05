@@ -1,8 +1,5 @@
 package com.houlis.haris.feature.list.di
 
-import com.houlis.haris.feature.list.api.PicturesRepositoryContract
-import com.houlis.haris.feature.list.data.PicturesRepository
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,7 +14,4 @@ internal interface PicturesModule {
         @Provides
         fun providesInputDebounceDuration(): Duration = Duration.ofMillis(500)
     }
-
-    @Binds
-    fun bindsRepository(repository: PicturesRepository): PicturesRepositoryContract
 }

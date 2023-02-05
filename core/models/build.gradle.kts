@@ -1,25 +1,23 @@
 @Suppress("DSL_SCOPE_VIOLATION") // Remove when fixed https://youtrack.jetbrains.com/issue/KTIJ-19369
 plugins {
-    alias(libs.plugins.kotlin.serialization)
     id("android-lib")
     id("android-hilt")
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
-    namespace = "com.houlis.haris.core.network"
+    namespace = "com.houlis.haris.core.data"
 }
 
 dependencies {
     with(libs) {
-        implementation(project(":core:domain"))
-        implementation(project(":core:models"))
         implementation(androidx.dataStore.preferences)
         implementation(kotlinx.coroutines.android)
         implementation(kotlinx.serialization.json)
         implementation(okhttp.logging)
         implementation(retrofit.core)
         implementation(retrofit.kotlin.serialization)
-        implementation(libs.result4k)
+        implementation(result4k)
 
         testImplementation(project(":core:test"))
     }

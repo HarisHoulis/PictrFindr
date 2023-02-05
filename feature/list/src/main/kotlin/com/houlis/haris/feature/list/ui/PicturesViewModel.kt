@@ -2,7 +2,7 @@ package com.houlis.haris.feature.list.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.houlis.haris.feature.list.api.PicturesRepositoryContract
+import com.houlis.haris.core.domain.PicturesRepositoryContract
 import com.houlis.haris.feature.list.ui.PicturesUiState.Type
 import com.houlis.haris.feature.list.ui.PicturesUiState.Type.Loading
 import dagger.hilt.android.lifecycle.HiltViewModel

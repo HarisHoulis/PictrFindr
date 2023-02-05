@@ -1,6 +1,6 @@
 package com.houlis.haris.feature.list.ui
 
-import com.houlis.haris.feature.list.domain.Picture
+import com.houlis.haris.core.domain.Picture
 
 data class PicturesUiState(val input: String, val type: Type) {
 
