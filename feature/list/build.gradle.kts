@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.houlis.haris.network.feature.list"
+    namespace = "com.houlis.haris.feature.list"
 }
 
 dependencies {
