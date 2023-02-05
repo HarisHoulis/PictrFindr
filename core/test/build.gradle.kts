@@ -13,6 +13,8 @@ dependencies {
     implementation(project(":core:network"))
     implementation(libs.kotlinx.serialization.json)
 
+    api(platform(libs.androidx.compose.bom))
+    api(libs.androidx.compose.ui.test)
     api(libs.junit4)
     api(libs.junit5.bom)
     api(libs.junit.jupiter)
@@ -24,4 +26,6 @@ dependencies {
     api(libs.kotest)
     api(libs.kotlinx.coroutines.test)
     api(libs.turbine)
+
+    debugApi(libs.androidx.compose.ui.testManifest)
 }
