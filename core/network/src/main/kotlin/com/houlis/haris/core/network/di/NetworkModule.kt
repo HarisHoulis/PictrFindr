@@ -1,9 +1,15 @@
-package com.houlis.haris.network.di
+package com.houlis.haris.core.network.di
 
-import com.houlis.haris.network.data.ApiProvider
+import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.PreferenceDataStoreFactory
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStoreFile
+import com.houlis.haris.core.network.api.ApiProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.json.Json
 import javax.inject.Qualifier
@@ -29,4 +35,11 @@ internal object NetworkModule {
     @ImageBaseUrl
     @Provides
     fun providesImageBaseUrl() = "https://live.staticflickr.com/"
+
+    @Provides
+    @Singleton
+    fun provideDataStore(@ApplicationContext context: Context): DataStore<Preferences> = PreferenceDataStoreFactory.create {
+        context.preferencesDataStoreFile("settings")
+    }
+
 }
