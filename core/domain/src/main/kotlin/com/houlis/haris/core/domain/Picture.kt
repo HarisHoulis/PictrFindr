@@ -1,12 +1,16 @@
-package com.houlis.haris.feature.list.domain
+package com.houlis.haris.core.domain
 
-import com.houlis.haris.network.data.model.PicturesResponseRaw.PicturesRaw.PictureRaw
+import com.houlis.haris.core.models.PicturesResponseRaw.PicturesRaw.PictureRaw
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Picture(
-    private val id: String,
+    val id: String,
     val image: Image,
     val title: Title,
 ) {
+
+    @Serializable
     @JvmInline
     value class Image private constructor(val value: String) {
         companion object {
@@ -31,6 +35,7 @@ data class Picture(
         }
     }
 
+    @Serializable
     @JvmInline
     value class Title(val value: String)
 }
