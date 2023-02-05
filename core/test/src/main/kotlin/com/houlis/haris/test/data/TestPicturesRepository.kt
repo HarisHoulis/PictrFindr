@@ -48,6 +48,14 @@ class TestPicturesRepository : PicturesRepositoryContract {
         }
     }
 
+    override suspend fun save(picture: Picture) {
+        // NO-OP
+    }
+
+    override suspend fun retrieve(picId: String): Picture {
+        throw NotImplementedError()
+    }
+
     enum class Query(val text: String) {
         Query1("donut"), Query2("hole")
     }
