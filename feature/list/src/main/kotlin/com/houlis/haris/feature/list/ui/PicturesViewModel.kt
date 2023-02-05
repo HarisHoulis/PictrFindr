@@ -2,7 +2,9 @@ package com.houlis.haris.feature.list.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.houlis.haris.core.domain.Picture
 import com.houlis.haris.core.domain.PicturesRepositoryContract
+import com.houlis.haris.feature.list.ui.PicturesUiState.NavigateToDetails
 import com.houlis.haris.feature.list.ui.PicturesUiState.Type
 import com.houlis.haris.feature.list.ui.PicturesUiState.Type.Loading
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -55,5 +57,20 @@ internal class PicturesViewModel @Inject constructor(
 
     fun searchFor(query: String) {
         _state.update { it.copy(input = query, type = Loading) }
+    }
+
+    fun onPictureClicked(picture: Picture) {
+        viewModelScope.launch {
+            repository.save(picture)
+            _state.update {
+                it.copy(navigateToDetails = NavigateToDetails(picture.id))
+            }
+        }
+    }
+
+    fun onNavigatedToDetails() {
+        _state.update {
+            it.copy(navigateToDetails = null)
+        }
     }
 }

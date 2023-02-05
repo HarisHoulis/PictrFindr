@@ -9,12 +9,13 @@ import com.houlis.haris.feature.list.ui.PicturesUiState.Type.Loading
 import com.houlis.haris.test.data.TestPicturesRepository
 import com.houlis.haris.test.data.TestPicturesRepository.Query.Query1
 import com.houlis.haris.test.data.TestPicturesRepository.Query.Query2
+import com.houlis.haris.test.domain.provider.dummyPicture1
 import com.houlis.haris.test.domain.provider.dummyPicture3
 import com.houlis.haris.test.domain.provider.dummyPicture4
 import com.houlis.haris.test.domain.provider.dummyPictures
 import com.houlis.haris.test.util.runTestWithDispatcher
 import io.kotest.matchers.shouldBe
-import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -40,7 +41,7 @@ internal class PicturesViewModelTest {
     ) = PicturesViewModel(repo, debounce)
 
     @Test
-    fun `has initial state`() = runTestWithDispatcher(StandardTestDispatcher()) {
+    fun `has initial state`() = runTestWithDispatcher {
         testedClass().state.test {
             awaitItem() shouldBe PicturesUiState("", Initial)
             expectNoEvents()
@@ -50,7 +51,7 @@ internal class PicturesViewModelTest {
     @ParameterizedTest
     @MethodSource("repo to expected UI state")
     fun `reduces state`(repo: PicturesRepositoryContract, expectedUiStateType: Type) =
-        runTestWithDispatcher(StandardTestDispatcher()) {
+        runTestWithDispatcher {
             // ARRANGE
             val initialState = PicturesUiState()
             val testedClass by lazy { testedClass(repo = repo) }
@@ -68,7 +69,7 @@ internal class PicturesViewModelTest {
         }
 
     @Test
-    fun `reduces state based on most recent query`() = runTestWithDispatcher(StandardTestDispatcher()) {
+    fun `reduces state based on most recent query`() = runTestWithDispatcher {
         // ARRANGE
         val initialState = PicturesUiState("", Initial)
         val testedClass = testedClass(debounce = Duration.ofMillis(10))
@@ -91,6 +92,24 @@ internal class PicturesViewModelTest {
                 )
             )
             expectNoEvents()
+        }
+    }
+
+    @Test
+    fun `navigates to details screen`() = runTestWithDispatcher(UnconfinedTestDispatcher()) {
+        // ARRANGE
+        val initialState = PicturesUiState("", Initial)
+        val testedClass = testedClass(debounce = Duration.ofMillis(10))
+
+        // ACT
+        testedClass.state.test {
+            testedClass.onPictureClicked(dummyPicture1())
+            testedClass.onNavigatedToDetails()
+
+            // ASSERT
+            awaitItem() shouldBe initialState
+            awaitItem() shouldBe initialState.copy(navigateToDetails = PicturesUiState.NavigateToDetails("52663187230"))
+            awaitItem() shouldBe initialState.copy(navigateToDetails = null)
         }
     }
 }

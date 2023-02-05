@@ -2,7 +2,7 @@ package com.houlis.haris.feature.list.ui
 
 import com.houlis.haris.core.domain.Picture
 
-data class PicturesUiState(val input: String, val type: Type) {
+internal data class PicturesUiState(val input: String, val type: Type, val navigateToDetails: NavigateToDetails? = null) {
 
     companion object {
         operator fun invoke() = PicturesUiState("", Type.Initial)
@@ -16,4 +16,6 @@ data class PicturesUiState(val input: String, val type: Type) {
         object Empty : Type
         object Error : Type
     }
+
+    data class NavigateToDetails(val picId: String)
 }
