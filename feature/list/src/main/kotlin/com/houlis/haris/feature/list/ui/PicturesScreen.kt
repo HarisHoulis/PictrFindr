@@ -1,4 +1,4 @@
-package com.houlis.haris.list.ui
+package com.houlis.haris.feature.list.ui
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
@@ -36,8 +36,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
-import com.houlis.haris.list.domain.Picture
-import com.houlis.haris.list.ui.PicturesUiState.Type
+import com.houlis.haris.feature.list.domain.Picture
+import com.houlis.haris.feature.list.ui.PicturesUiState.Type
 import com.houlis.haris.network.feature.list.R
 
 @Composable

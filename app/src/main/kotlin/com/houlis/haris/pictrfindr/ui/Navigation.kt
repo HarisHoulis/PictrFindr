@@ -3,8 +3,8 @@ package com.houlis.haris.pictrfindr.ui
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.houlis.haris.list.ui.navigation.picturesGraph
-import com.houlis.haris.list.ui.navigation.picturesRoute
+import com.houlis.haris.feature.list.ui.navigation.picturesGraph
+import com.houlis.haris.feature.list.ui.navigation.picturesRoute
 
 @Composable
 fun MainNavigation() {

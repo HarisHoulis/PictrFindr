@@ -1,4 +1,4 @@
-package com.houlis.haris.list.domain
+package com.houlis.haris.feature.list.domain
 
 import com.houlis.haris.network.data.model.PicturesResponseRaw.PicturesRaw.PictureRaw
 

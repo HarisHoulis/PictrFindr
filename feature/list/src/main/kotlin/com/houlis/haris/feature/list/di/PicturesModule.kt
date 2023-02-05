@@ -1,7 +1,7 @@
-package com.houlis.haris.list.di
+package com.houlis.haris.feature.list.di
 
-import com.houlis.haris.list.api.PicturesRepositoryContract
-import com.houlis.haris.list.data.PicturesRepository
+import com.houlis.haris.feature.list.api.PicturesRepositoryContract
+import com.houlis.haris.feature.list.data.PicturesRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

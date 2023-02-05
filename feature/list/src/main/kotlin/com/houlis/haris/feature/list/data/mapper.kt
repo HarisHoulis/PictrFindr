@@ -1,6 +1,6 @@
-package com.houlis.haris.list.data
+package com.houlis.haris.feature.list.data
 
-import com.houlis.haris.list.domain.Picture
+import com.houlis.haris.feature.list.domain.Picture
 import com.houlis.haris.network.data.model.PicturesResponseRaw
 
 internal fun PicturesResponseRaw.toDomain(imageBaseUrl: String): List<Picture> =

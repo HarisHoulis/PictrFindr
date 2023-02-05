@@ -1,7 +1,7 @@
-package com.houlis.haris.list.data
+package com.houlis.haris.feature.list.data
 
-import com.houlis.haris.list.api.PicturesRepositoryContract
-import com.houlis.haris.list.domain.Picture
+import com.houlis.haris.feature.list.api.PicturesRepositoryContract
+import com.houlis.haris.feature.list.domain.Picture
 import com.houlis.haris.network.asResult
 import com.houlis.haris.network.data.PicturesApi
 import com.houlis.haris.network.di.ImageBaseUrl
