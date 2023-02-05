@@ -1,6 +1,5 @@
-package com.houlis.haris.feature.list.domain
+package com.houlis.haris.core.domain
 
-import com.houlis.haris.feature.list.domain.Picture
 import com.houlis.haris.test.data.provider.provider.dummyPictureRaw1
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
