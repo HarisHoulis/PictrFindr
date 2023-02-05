@@ -1,12 +1,12 @@
-package com.houlis.haris.list
+package com.houlis.haris.feature.list
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
-import com.houlis.haris.list.ui.PicturesScreen
-import com.houlis.haris.list.ui.PicturesUiState
-import com.houlis.haris.list.ui.PicturesUiState.Type.Empty
-import com.houlis.haris.list.ui.PicturesUiState.Type.Error
+import com.houlis.haris.feature.list.ui.PicturesScreen
+import com.houlis.haris.feature.list.ui.PicturesUiState
+import com.houlis.haris.feature.list.ui.PicturesUiState.Type.Empty
+import com.houlis.haris.feature.list.ui.PicturesUiState.Type.Error
 import org.junit.Rule
 import org.junit.Test
 

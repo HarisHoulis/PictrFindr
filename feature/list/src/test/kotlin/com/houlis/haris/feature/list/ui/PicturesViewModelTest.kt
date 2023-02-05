@@ -1,15 +1,17 @@
-package com.houlis.haris.list.ui
+package com.houlis.haris.feature.list.ui
 
 import app.cash.turbine.test
-import com.houlis.haris.list.data.PicturesRepository
-import com.houlis.haris.list.domain.IMAGE_BASE_URL
-import com.houlis.haris.list.domain.dummyPicture3
-import com.houlis.haris.list.domain.dummyPicture4
-import com.houlis.haris.list.domain.dummyPictures
-import com.houlis.haris.list.ui.PicturesUiState.Type
-import com.houlis.haris.list.ui.PicturesUiState.Type.Fetched
-import com.houlis.haris.list.ui.PicturesUiState.Type.Initial
-import com.houlis.haris.list.ui.PicturesUiState.Type.Loading
+import com.houlis.haris.feature.list.data.PicturesRepository
+import com.houlis.haris.feature.list.domain.IMAGE_BASE_URL
+import com.houlis.haris.feature.list.domain.dummyPicture3
+import com.houlis.haris.feature.list.domain.dummyPicture4
+import com.houlis.haris.feature.list.domain.dummyPictures
+import com.houlis.haris.feature.list.ui.PicturesUiState
+import com.houlis.haris.feature.list.ui.PicturesUiState.Type
+import com.houlis.haris.feature.list.ui.PicturesUiState.Type.Fetched
+import com.houlis.haris.feature.list.ui.PicturesUiState.Type.Initial
+import com.houlis.haris.feature.list.ui.PicturesUiState.Type.Loading
+import com.houlis.haris.feature.list.ui.PicturesViewModel
 import com.houlis.haris.network.data.PicturesApi
 import com.houlis.haris.test.data.TestPicturesApi
 import com.houlis.haris.test.data.TestPicturesApi.Query.Query1

@@ -1,10 +1,10 @@
-package com.houlis.haris.list.ui
+package com.houlis.haris.feature.list.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.houlis.haris.list.api.PicturesRepositoryContract
-import com.houlis.haris.list.ui.PicturesUiState.Type
-import com.houlis.haris.list.ui.PicturesUiState.Type.Loading
+import com.houlis.haris.feature.list.api.PicturesRepositoryContract
+import com.houlis.haris.feature.list.ui.PicturesUiState.Type
+import com.houlis.haris.feature.list.ui.PicturesUiState.Type.Loading
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.forkhandles.result4k.Failure
 import dev.forkhandles.result4k.Success

@@ -1,6 +1,7 @@
-package com.houlis.haris.list.data
+package com.houlis.haris.feature.list.data
 
-import com.houlis.haris.list.domain.Picture
+import com.houlis.haris.feature.list.domain.Picture
+import com.houlis.haris.feature.list.data.toDomain
 import com.houlis.haris.test.data.provider.provider.dummyPictureRaw1
 import com.houlis.haris.test.data.provider.provider.dummyPictureRaw2
 import com.houlis.haris.test.data.provider.provider.dummyPicturesResponseRaw
