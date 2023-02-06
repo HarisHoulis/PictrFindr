@@ -31,5 +31,3 @@ internal val tokenInterceptor = Interceptor { chain ->
 
     chain.proceed(newRequest)
 }
-
-

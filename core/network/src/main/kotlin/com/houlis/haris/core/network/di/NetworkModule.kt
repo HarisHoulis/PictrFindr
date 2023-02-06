@@ -41,5 +41,4 @@ internal object NetworkModule {
     fun provideDataStore(@ApplicationContext context: Context): DataStore<Preferences> = PreferenceDataStoreFactory.create {
         context.preferencesDataStoreFile("settings")
     }
-
 }

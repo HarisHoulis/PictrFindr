@@ -62,7 +62,6 @@ internal fun PicturesRoute(
     ) {
         viewModel.searchFor(it)
     }
-
 }
 
 @Composable
@@ -164,8 +163,7 @@ private fun PictureItem(picture: Picture, modifier: Modifier = Modifier, onClick
             text = picture.title.value,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,
-            modifier = Modifier.align(Alignment.CenterVertically),
+            modifier = Modifier.align(Alignment.CenterVertically)
         )
-
     }
 }

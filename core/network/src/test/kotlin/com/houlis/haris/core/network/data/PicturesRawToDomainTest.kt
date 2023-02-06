@@ -30,6 +30,6 @@ internal class PicturesRawToDomainTest {
             id = "52662247857",
             image = Picture.Image(IMAGE_BASE_URL, dummyPictureRaw2()),
             title = Picture.Title("Donat")
-        ),
+        )
     )
 }

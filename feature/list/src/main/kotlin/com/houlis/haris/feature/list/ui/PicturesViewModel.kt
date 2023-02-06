@@ -45,10 +45,11 @@ internal class PicturesViewModel @Inject constructor(
                     val newState = when (val result = repository.searchFor(query)) {
                         is Failure -> Type.Error
                         is Success ->
-                            if (result.value.isEmpty())
+                            if (result.value.isEmpty()) {
                                 Type.Empty
-                            else
+                            } else {
                                 Type.Fetched(result.value)
+                            }
                     }
                     _state.update { it.copy(type = newState) }
                 }
