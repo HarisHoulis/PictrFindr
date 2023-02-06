@@ -12,6 +12,7 @@ internal class PictureImageTest {
 
         val result = Picture.Image(imageBaseUrl, dummyPictureRaw1())
 
-        result.value shouldBe "${imageBaseUrl}65535/52663187230_3c0b1465a7_t.jpg"
+        result.thumbnail shouldBe "${imageBaseUrl}65535/52663187230_3c0b1465a7_t.jpg"
+        result.large shouldBe "${imageBaseUrl}65535/52663187230_3c0b1465a7.jpg"
     }
 }

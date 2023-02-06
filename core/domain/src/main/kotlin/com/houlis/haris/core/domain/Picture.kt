@@ -12,11 +12,12 @@ data class Picture(
 
     @Serializable
     @JvmInline
-    value class Image private constructor(val value: String) {
+    value class Image private constructor(private val basePath: String) {
+
         companion object {
             private const val FORWARD_SLASH = "/"
             private const val UNDERSCORE = "_"
-            private const val SIZE_SUFFIX = "t"
+            private const val THUMBNAIL_SUFFIX = "t"
             private const val JPG_EXT = ".jpg"
 
             operator fun invoke(baseUrl: String, pictureRaw: PictureRaw) = Image(
@@ -27,12 +28,23 @@ data class Picture(
                     append(pictureRaw.id)
                     append(UNDERSCORE)
                     append(pictureRaw.secret)
-                    append(UNDERSCORE)
-                    append(SIZE_SUFFIX)
-                    append(JPG_EXT)
                 }
             )
         }
+
+        val thumbnail: String
+            get() = buildString {
+                append(basePath)
+                append(UNDERSCORE)
+                append(THUMBNAIL_SUFFIX)
+                append(JPG_EXT)
+            }
+
+        val large: String
+            get() = buildString {
+                append(basePath)
+                append(JPG_EXT)
+            }
     }
 
     @Serializable
