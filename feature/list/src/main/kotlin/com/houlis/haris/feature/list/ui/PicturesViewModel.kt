@@ -15,7 +15,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.filterNot
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -38,10 +37,14 @@ internal class PicturesViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             queryFLow
-                .filterNot(String::isEmpty)
                 .debounce(inputDebounce.toMillis())
                 .distinctUntilChanged()
                 .collectLatest { query ->
+                    if (query.isBlank()) {
+                        _state.update { it.copy(type = Type.Initial) }
+                        return@collectLatest
+                    }
+
                     val newState = when (val result = repository.searchFor(query)) {
                         is Failure -> Type.Error
                         is Success ->
