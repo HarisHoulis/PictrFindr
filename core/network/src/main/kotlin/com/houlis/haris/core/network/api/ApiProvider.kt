@@ -19,7 +19,7 @@ import javax.inject.Singleton
  */
 private interface RetrofitPicturesApi : PicturesApi {
 
-    @GET("?method=flickr.photos.search&format=json&per_page=5&nojsoncallback=1")
+    @GET("?method=flickr.photos.search&format=json&per_page=25&nojsoncallback=1")
     override suspend fun searchFor(
         @Query("text") query: String,
     ): PicturesResponseRaw
