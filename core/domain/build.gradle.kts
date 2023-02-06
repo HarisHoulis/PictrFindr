@@ -11,10 +11,8 @@ android {
 
 dependencies {
     implementation(project(":core:models"))
-    implementation(libs.androidx.dataStore.preferences)
     implementation(libs.result4k)
     implementation(libs.kotlinx.serialization.json)
 
     testImplementation(project(":core:test"))
-    testImplementation(kotlin("test"))
 }

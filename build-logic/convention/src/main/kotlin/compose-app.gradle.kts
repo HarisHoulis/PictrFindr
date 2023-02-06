@@ -34,21 +34,10 @@ android {
 
 
 dependencies {
-    add("debugImplementation", libs.getLib("androidx.compose.ui.tooling"))
-    add("debugImplementation", libs.getLib("androidx.compose.ui.tooling.preview"))
-
     val bom = libs.getLib("androidx-compose-bom")
     add("implementation", platform(bom))
     add("implementation", libs.getLib("androidx.activity.compose"))
     add("implementation", libs.getLib("androidx.compose.material3"))
     add("implementation", libs.getLib("androidx.compose.ui"))
-    add("implementation", libs.getLib("androidx.compose.ui.tooling.preview"))
-    add("implementation", libs.getLib("androidx.hilt.navigation.compose"))
-    add("implementation", libs.getLib("androidx.lifecycle.runtimeCompose"))
-    add("implementation", libs.getLib("androidx.lifecycle.viewModelCompose"))
     add("implementation", libs.getLib("androidx.navigation.compose"))
-
-    //TODO check if we need that: implementation "androidx.compose.ui:ui.graphics"
-
-    add("androidTestImplementation", platform(bom))
 }
