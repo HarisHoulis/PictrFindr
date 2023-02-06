@@ -100,7 +100,7 @@ internal class PicturesViewModelTest {
     fun `navigates to details screen`() = runTestWithDispatcher(UnconfinedTestDispatcher()) {
         // ARRANGE
         val initialState = PicturesUiState("", Initial)
-        val testedClass = testedClass(debounce = Duration.ofMillis(10))
+        val testedClass = testedClass()
 
         // ACT
         testedClass.state.test {
@@ -115,7 +115,7 @@ internal class PicturesViewModelTest {
     }
 
     @Test
-    fun `when query is empty, then fallback to initial state`() = runTestWithDispatcher {
+    fun `when query is empty, then fallback to initial state`() = runTestWithDispatcher(UnconfinedTestDispatcher()) {
         // ARRANGE
         val initialState = PicturesUiState("", Initial)
         val testedClass = testedClass(debounce = Duration.ofMillis(10))
