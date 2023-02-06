@@ -40,23 +40,25 @@ internal class PicturesViewModel @Inject constructor(
                 .debounce(inputDebounce.toMillis())
                 .distinctUntilChanged()
                 .collectLatest { query ->
-                    if (query.isBlank()) {
-                        _state.update { it.copy(type = Type.Initial) }
-                        return@collectLatest
+                    when{
+                        query.isBlank() ->_state.update { it.copy(type = Type.Initial) }
+                        else -> initSearchFor(query)
                     }
-
-                    val newState = when (val result = repository.searchFor(query)) {
-                        is Failure -> Type.Error
-                        is Success ->
-                            if (result.value.isEmpty()) {
-                                Type.Empty
-                            } else {
-                                Type.Fetched(result.value)
-                            }
-                    }
-                    _state.update { it.copy(type = newState) }
                 }
         }
+    }
+
+    private suspend fun initSearchFor(query: String) {
+        val newState = when (val result = repository.searchFor(query)) {
+            is Failure -> Type.Error
+            is Success ->
+                if (result.value.isEmpty()) {
+                    Type.Empty
+                } else {
+                    Type.Fetched(result.value)
+                }
+        }
+        _state.update { it.copy(type = newState) }
     }
 
     fun searchFor(query: String) {
