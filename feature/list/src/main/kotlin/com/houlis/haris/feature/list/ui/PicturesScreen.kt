@@ -151,7 +151,7 @@ private fun PictureItem(picture: Picture, modifier: Modifier = Modifier, onClick
         }
     ) {
         AsyncImage(
-            model = picture.image.value,
+            model = picture.image.thumbnail,
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
