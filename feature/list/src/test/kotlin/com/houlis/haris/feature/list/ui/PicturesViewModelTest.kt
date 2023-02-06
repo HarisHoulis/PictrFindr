@@ -113,4 +113,23 @@ internal class PicturesViewModelTest {
             awaitItem() shouldBe initialState.copy(navigateToDetails = null)
         }
     }
+
+    @Test
+    fun `when query is empty, then fallback to initial state`() = runTestWithDispatcher {
+        // ARRANGE
+        val initialState = PicturesUiState("", Initial)
+        val testedClass = testedClass(debounce = Duration.ofMillis(10))
+
+        // ACT
+        testedClass.state.test {
+            testedClass.searchFor(Query1.text)
+            testedClass.searchFor("")
+
+            // ASSERT
+            awaitItem() shouldBe initialState
+            awaitItem() shouldBe initialState.copy(input = Query1.text, Loading)
+            awaitItem() shouldBe initialState.copy(input = "", Loading)
+            awaitItem() shouldBe initialState.copy(input = "", Initial)
+        }
+    }
 }
