@@ -31,6 +31,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -80,7 +81,10 @@ internal fun PicturesScreen(
             Type.Empty -> InfoItem(R.string.empty_list)
             Type.Error -> InfoItem(R.string.error)
             Type.Loading -> Loading()
-            is Type.Fetched -> PicturesList(uiState, modifier, onClick)
+            is Type.Fetched -> {
+                LocalFocusManager.current.clearFocus()
+                PicturesList(uiState, modifier, onClick)
+            }
         }
     }
 }
