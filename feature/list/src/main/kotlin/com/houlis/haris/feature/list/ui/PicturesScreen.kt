@@ -31,15 +31,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import com.houlis.haris.core.domain.Picture
 import com.houlis.haris.feature.list.R
 import com.houlis.haris.feature.list.ui.PicturesUiState.Type
+import com.houlis.haris.core.design.R as DesignR
 
 @Composable
 internal fun PicturesRoute(
@@ -72,7 +73,7 @@ internal fun PicturesScreen(
     onValueChange: (String) -> Unit,
 ) {
     Column {
-        Spacer(Modifier.height(16.dp))
+        Spacer(Modifier.height(dimensionResource(DesignR.dimen.spacer_height)))
         SearchBar(state.input, onValueChange = onValueChange)
 
         when (val uiState = state.type) {
@@ -108,8 +109,8 @@ private fun Loading(modifier: Modifier = Modifier) {
 @Composable
 private fun PicturesList(uiState: Type.Fetched, modifier: Modifier = Modifier, onClick: (Picture) -> Unit) {
     LazyColumn(
-        contentPadding = PaddingValues(16.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+        contentPadding = PaddingValues(dimensionResource(DesignR.dimen.padding_4x)),
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(DesignR.dimen.padding_2x))
     ) {
         items(items = uiState.pictures) { picture ->
             PictureItem(picture, modifier, onClick)
@@ -130,7 +131,7 @@ private fun SearchBar(
         leadingIcon = {
             Icon(
                 imageVector = Icons.Default.Search,
-                contentDescription = null
+                contentDescription = stringResource(R.string.search_ctd)
             )
         },
         colors = TextFieldDefaults.textFieldColors(containerColor = MaterialTheme.colorScheme.surface),
@@ -139,7 +140,7 @@ private fun SearchBar(
         },
         modifier = modifier
             .fillMaxWidth()
-            .heightIn(min = 56.dp)
+            .heightIn(min = dimensionResource(DesignR.dimen.search_bar_min_height))
     )
 }
 
@@ -152,11 +153,11 @@ private fun PictureItem(picture: Picture, modifier: Modifier = Modifier, onClick
     ) {
         AsyncImage(
             model = picture.image.thumbnail,
-            contentDescription = null,
+            contentDescription = stringResource(R.string.picture_item_ctd),
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .size(90.dp)
-                .padding(end = 8.dp)
+                .size(dimensionResource(DesignR.dimen.thumbnail_image_size))
+                .padding(end = dimensionResource(DesignR.dimen.padding_2x))
                 .clip(MaterialTheme.shapes.small)
         )
         Text(
