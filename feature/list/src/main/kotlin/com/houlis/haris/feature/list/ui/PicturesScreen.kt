@@ -76,15 +76,16 @@ internal fun PicturesScreen(
         Spacer(Modifier.height(dimensionResource(DesignR.dimen.spacer_height)))
         SearchBar(state.input, onValueChange = onValueChange)
 
+        if (state.type != Type.Loading) {
+            LocalFocusManager.current.clearFocus()
+        }
+
         when (val uiState = state.type) {
             Type.Initial -> InfoItem(R.string.init_message)
             Type.Empty -> InfoItem(R.string.empty_list)
             Type.Error -> InfoItem(R.string.error)
             Type.Loading -> Loading()
-            is Type.Fetched -> {
-                LocalFocusManager.current.clearFocus()
-                PicturesList(uiState, modifier, onClick)
-            }
+            is Type.Fetched -> PicturesList(uiState, modifier, onClick)
         }
     }
 }
