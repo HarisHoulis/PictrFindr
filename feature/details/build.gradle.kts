@@ -8,5 +8,4 @@ android {
 
 dependencies {
     implementation(project(":core:domain"))
-    implementation(libs.result4k)
 }

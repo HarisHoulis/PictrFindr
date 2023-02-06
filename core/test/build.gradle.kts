@@ -22,7 +22,6 @@ dependencies {
     api(libs.junit5.bom)
     api(libs.junit.jupiter)
     api(libs.androidx.test.core)
-    api(libs.androidx.test.espresso.core)
     api(libs.androidx.test.rules)
     api(libs.androidx.test.runner)
     api(libs.hilt.android.testing)
