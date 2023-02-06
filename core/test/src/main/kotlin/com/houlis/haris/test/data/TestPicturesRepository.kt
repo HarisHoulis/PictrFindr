@@ -52,9 +52,7 @@ class TestPicturesRepository : PicturesRepositoryContract {
         // NO-OP
     }
 
-    override suspend fun retrieve(picId: String): Picture {
-        throw NotImplementedError()
-    }
+    override suspend fun retrieve(picId: String): Picture = dummyPicture1()
 
     enum class Query(val text: String) {
         Query1("donut"), Query2("hole")
