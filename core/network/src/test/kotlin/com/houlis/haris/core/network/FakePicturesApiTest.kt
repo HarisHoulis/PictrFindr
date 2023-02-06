@@ -1,7 +1,7 @@
 package com.houlis.haris.core.network
 
 import com.houlis.haris.test.data.FakePicturesApi
-import com.houlis.haris.test.data.provider.provider.dummyPicturesResponseRaw
+import com.houlis.haris.test.data.provider.dummyPicturesResponseRaw
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest

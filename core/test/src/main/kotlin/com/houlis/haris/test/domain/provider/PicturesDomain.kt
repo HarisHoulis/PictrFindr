@@ -1,10 +1,10 @@
 package com.houlis.haris.test.domain.provider
 
 import com.houlis.haris.core.domain.Picture
-import com.houlis.haris.test.data.provider.provider.dummyPictureRaw1
-import com.houlis.haris.test.data.provider.provider.dummyPictureRaw2
-import com.houlis.haris.test.data.provider.provider.dummyPictureRaw3
-import com.houlis.haris.test.data.provider.provider.dummyPictureRaw4
+import com.houlis.haris.test.data.provider.dummyPictureRaw1
+import com.houlis.haris.test.data.provider.dummyPictureRaw2
+import com.houlis.haris.test.data.provider.dummyPictureRaw3
+import com.houlis.haris.test.data.provider.dummyPictureRaw4
 
 const val IMAGE_BASE_URL = "someurl.com"
 
