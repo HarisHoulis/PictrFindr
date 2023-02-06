@@ -1,4 +1,4 @@
-package com.houlis.haris.test.data.provider.provider
+package com.houlis.haris.test.data.provider
 
 import com.houlis.haris.core.models.PicturesResponseRaw
 import com.houlis.haris.core.models.PicturesResponseRaw.PicturesRaw

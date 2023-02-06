@@ -1,9 +1,9 @@
 package com.houlis.haris.core.network.data
 
 import com.houlis.haris.core.domain.Picture
-import com.houlis.haris.test.data.provider.provider.dummyPictureRaw1
-import com.houlis.haris.test.data.provider.provider.dummyPictureRaw2
-import com.houlis.haris.test.data.provider.provider.dummyPicturesResponseRaw
+import com.houlis.haris.test.data.provider.dummyPictureRaw1
+import com.houlis.haris.test.data.provider.dummyPictureRaw2
+import com.houlis.haris.test.data.provider.dummyPicturesResponseRaw
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
