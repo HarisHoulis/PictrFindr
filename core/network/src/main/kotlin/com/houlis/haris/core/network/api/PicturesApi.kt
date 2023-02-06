@@ -6,4 +6,3 @@ interface PicturesApi {
 
     suspend fun searchFor(query: String): PicturesResponseRaw
 }
-

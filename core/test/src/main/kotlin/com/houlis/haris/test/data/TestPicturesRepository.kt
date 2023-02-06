@@ -57,5 +57,4 @@ class TestPicturesRepository : PicturesRepositoryContract {
     enum class Query(val text: String) {
         Query1("donut"), Query2("hole")
     }
-
 }

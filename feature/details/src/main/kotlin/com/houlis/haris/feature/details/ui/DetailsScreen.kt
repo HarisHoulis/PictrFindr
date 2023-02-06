@@ -59,7 +59,6 @@ fun DetailsScreen(uiState: DetailsUiState.Fetched, modifier: Modifier = Modifier
             )
         }
     }
-
 }
 
 @Composable
@@ -71,4 +70,3 @@ private fun Loading(modifier: Modifier = Modifier) {
         CircularProgressIndicator()
     }
 }
-

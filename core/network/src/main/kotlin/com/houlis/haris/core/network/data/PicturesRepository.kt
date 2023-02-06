@@ -50,5 +50,4 @@ internal class PicturesRepository @Inject constructor(
             val serialized = prefs[pictureKey] ?: throw IllegalArgumentException("Picture with id $picId not found!")
             json.decodeFromString<Picture>(serialized)
         }.first()
-
 }

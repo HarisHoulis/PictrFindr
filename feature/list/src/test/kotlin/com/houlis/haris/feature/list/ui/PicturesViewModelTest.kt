@@ -29,7 +29,7 @@ internal class PicturesViewModelTest {
         fun `repo to expected UI state`() = listOf(
             Arguments.of(testPicturesRepo(), Fetched(dummyPictures())),
             Arguments.of(testPicturesRepo().apply { setEmptyResponse() }, Type.Empty),
-            Arguments.of(testPicturesRepo().apply { throwException() }, Type.Error),
+            Arguments.of(testPicturesRepo().apply { throwException() }, Type.Error)
         )
 
         private fun testPicturesRepo() = TestPicturesRepository()
@@ -84,7 +84,8 @@ internal class PicturesViewModelTest {
             awaitItem() shouldBe initialState.copy(input = Query1.text, Loading)
             awaitItem() shouldBe initialState.copy(input = Query2.text, Loading)
             awaitItem() shouldBe initialState.copy(
-                Query2.text, type = Fetched(
+                Query2.text,
+                type = Fetched(
                     listOf(
                         dummyPicture3(),
                         dummyPicture4()
@@ -113,4 +114,3 @@ internal class PicturesViewModelTest {
         }
     }
 }
-
