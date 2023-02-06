@@ -39,7 +39,7 @@ fun DetailsScreen(uiState: DetailsUiState.Fetched, modifier: Modifier = Modifier
         modifier = modifier
     ) {
         AsyncImage(
-            model = uiState.image.value,
+            model = uiState.image.large,
             contentDescription = null,
             modifier = Modifier.size(200.dp)
         )
