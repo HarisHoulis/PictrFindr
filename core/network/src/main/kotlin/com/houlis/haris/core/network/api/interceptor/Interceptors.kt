@@ -1,5 +1,6 @@
 package com.houlis.haris.core.network.api.interceptor
 
+import com.houlis.haris.core.network.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.logging.HttpLoggingInterceptor
 
@@ -8,7 +9,7 @@ private const val PARAMETER_NAME_API_KEY = "api_key"
 
 internal val loggingInterceptor = HttpLoggingInterceptor().apply {
     level = when {
-        true -> HttpLoggingInterceptor.Level.BODY
+        BuildConfig.DEBUG -> HttpLoggingInterceptor.Level.BODY
         else -> HttpLoggingInterceptor.Level.NONE
     }
 }
