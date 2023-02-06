@@ -1,11 +1,15 @@
 package com.houlis.haris.feature.details.ui
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.AlertDialog
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -27,23 +31,32 @@ fun DetailsRoute(
         DetailsUiState.Loading -> Loading(modifier)
         is DetailsUiState.Fetched -> DetailsScreen(state, modifier, onBackClicked)
     }
-
     viewModel.getImageFor(picId)
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailsScreen(uiState: DetailsUiState.Fetched, modifier: Modifier = Modifier, onBackClicked: () -> Unit) {
-    AlertDialog(
-        onDismissRequest = onBackClicked,
-        modifier = modifier
-    ) {
-        AsyncImage(
-            model = uiState.image.large,
+    Column(modifier = modifier) {
+        Icon(
+            imageVector = Icons.Rounded.ArrowBack,
             contentDescription = null,
-            modifier = Modifier.size(200.dp)
+            modifier = Modifier
+                .clickable(onClick = onBackClicked)
+                .padding(16.dp)
         )
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = modifier.fillMaxSize()
+        ) {
+            AsyncImage(
+                model = uiState.image.large,
+                contentDescription = null,
+                modifier = Modifier
+                    .size(300.dp)
+            )
+        }
     }
+
 }
 
 @Composable
