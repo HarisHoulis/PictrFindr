@@ -14,10 +14,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
+import com.houlis.haris.feature.details.R
+import com.houlis.haris.core.design.R as DesignR
 
 @Composable
 fun DetailsRoute(
@@ -42,7 +45,7 @@ fun DetailsScreen(uiState: DetailsUiState.Fetched, modifier: Modifier = Modifier
             contentDescription = null,
             modifier = Modifier
                 .clickable(onClick = onBackClicked)
-                .padding(16.dp)
+                .padding(dimensionResource(DesignR.dimen.padding_4x))
         )
         Box(
             contentAlignment = Alignment.Center,
@@ -50,9 +53,9 @@ fun DetailsScreen(uiState: DetailsUiState.Fetched, modifier: Modifier = Modifier
         ) {
             AsyncImage(
                 model = uiState.image.large,
-                contentDescription = null,
+                contentDescription = stringResource(R.string.large_image_ctd),
                 modifier = Modifier
-                    .size(300.dp)
+                    .size(dimensionResource(DesignR.dimen.large_image_size))
             )
         }
     }

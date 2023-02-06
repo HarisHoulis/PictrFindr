@@ -15,6 +15,7 @@ android {
 
 dependencies {
     add("implementation", project(":core:network"))
+    add("implementation", project(":core:design"))
     add("implementation", libs.getLib("androidx.compose.bom"))
     add("implementation", libs.getLib("androidx.compose.foundation"))
     add("implementation", libs.getLib("androidx.compose.foundation.layout"))
