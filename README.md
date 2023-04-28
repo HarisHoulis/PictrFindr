@@ -1,7 +1,5 @@
 # PictrFindr App
 
-<img src="https://user-images.githubusercontent.com/16525973/216974702-3759ef5c-dd7f-4e05-8a4f-d34de0a11085.png" height=500 /><img src="https://user-images.githubusercontent.com/16525973/216975323-53f836cb-5905-4189-bf1f-aebb66fa806c.png" height=500 /><img src="https://user-images.githubusercontent.com/16525973/216975408-9391d16d-eb50-4441-81a4-645c3c3620a7.png" height=500 />
-
 ## Build  :warning:
 
 :rotating_light: Before building the app, make sure to include your API_KEY at `Interceptors.API_KEY`. :rotating_light:
