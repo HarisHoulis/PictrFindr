@@ -91,3 +91,15 @@ lint/tmp/
 # lint/reports/
 
 .idea/androidTestResultsUserPreferences.xml
+
+.idea/kotlinc.xml
+
+.idea/misc.xml
+
+.idea/compiler.xml
+
+.idea/deploymentTargetDropDown.xml
+
+.idea/codeStyles/Project.xml
+
+.idea/codeStyles/codeStyleConfig.xml
