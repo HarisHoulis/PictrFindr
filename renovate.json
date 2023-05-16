@@ -6,14 +6,15 @@
     "rebaseWhen": "behind-base-branch",
     "packageRules": [
         {
+            "description": "Automatically merge minor and patch-level updates",
             "matchUpdateTypes": [
                 "minor",
                 "patch",
                 "pin",
                 "digest"
             ],
-            "automerge": true
+            "automerge": true,
+            "platformAutomerge": true
         }
-    ],
-    "assigneesFromCodeOwners": true
+    ]
 }
