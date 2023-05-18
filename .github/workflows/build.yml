@@ -1,0 +1,43 @@
+name: Build
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        timeout-minutes: 45
+
+        steps:
+            -   uses: actions/checkout@v3
+
+            -   name: Validate Gradle Wrapper
+                uses: gradle/wrapper-validation-action@v1
+
+            -   name: set up JDK
+                uses: actions/setup-java@v3
+                with:
+                    distribution: 'zulu'
+                    java-version: 17
+
+            -   uses: gradle/gradle-build-action@v2
+                with:
+                    gradle-home-cache-cleanup: true
+
+            -   name: Check spotless
+                run: ./gradlew spotlessCheck --init-script gradle/init.gradle.kts --no-configuration-cache
+
+            -   name: Check lint
+                run: ./gradlew lintDebug
+
+            -   name: Build
+                run: ./gradlew assembleDebug
+
+            -   name: Run tests
+                run: ./gradlew test
+
+            -   name: Run check
+                run: ./gradlew check
