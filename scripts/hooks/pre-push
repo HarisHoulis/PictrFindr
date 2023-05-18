@@ -1,0 +1,6 @@
+#!/bin/sh
+echo "Running pre-push hooks"
+
+./gradlew spotlessCheck --init-script gradle/init.gradle.kts --no-configuration-cache
+
+exit $?
