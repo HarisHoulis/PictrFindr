@@ -2,7 +2,7 @@
 androidDesugarJdkLibs = "1.2.3"
 androidGradlePlugin = "8.0.1"
 androidxActivity = "1.7.1"
-androidxComposeBom = "2022.12.00"
+androidxComposeBom = "2023.05.01"
 androidxComposeCompiler = "1.4.7"
 androidxCore = "1.10.1"
 androidxDataStore = "1.0.0"
