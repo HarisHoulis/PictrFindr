@@ -40,8 +40,8 @@ internal class PicturesViewModel @Inject constructor(
                 .debounce(inputDebounce.toMillis())
                 .distinctUntilChanged()
                 .collectLatest { query ->
-                    when{
-                        query.isBlank() ->_state.update { it.copy(type = Type.Initial) }
+                    when {
+                        query.isBlank() -> _state.update { it.copy(type = Type.Initial) }
                         else -> initSearchFor(query)
                     }
                 }

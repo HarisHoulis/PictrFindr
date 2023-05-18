@@ -21,7 +21,6 @@ rootProject {
                 targetExclude("**/build/**/*.kt")
                 ktlint(ktlintVersion)
                     .userData(mapOf("android" to "true"))
-                    .setEditorConfigPath("$rootDir/.editorConfig")
             }
             format("kts") {
                 target("**/*.kts")
