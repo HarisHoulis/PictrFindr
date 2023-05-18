@@ -5,7 +5,7 @@ plugins {
 
 android {
     configureCompose(project)
-    packagingOptions {
+    packaging {
         resources {
             excludes.add("META-INF/LICENSE.md")
             excludes.add("META-INF/LICENSE-notice.md")
