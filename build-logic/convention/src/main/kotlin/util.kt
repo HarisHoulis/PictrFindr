@@ -2,8 +2,8 @@
 
 import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
-import gradle.kotlin.dsl.accessors._6e086f953609a9f6cf2e2a0981eb6f58.kotlinOptions
-import gradle.kotlin.dsl.accessors._f5177550c20f82cf6909e67a1981b117.kotlinOptions
+import gradle.kotlin.dsl.accessors._34ff08b16d2a5f60e598f7635138300e.kotlinOptions
+import gradle.kotlin.dsl.accessors._7c4467f927444144f1668995ca396f5c.kotlinOptions
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
