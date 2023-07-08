@@ -17,6 +17,12 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             extensions.configure<LibraryExtension> {
                 configureKotlinAndroid(this)
                 compileSdk = 33
+                packaging {
+                    resources {
+                        excludes.add("META-INF/LICENSE.md")
+                        excludes.add("META-INF/LICENSE-notice.md")
+                    }
+                }
             }
 
             dependencies {
