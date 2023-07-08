@@ -11,7 +11,9 @@ import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
@@ -34,7 +36,10 @@ fun DetailsRoute(
         DetailsUiState.Loading -> Loading(modifier)
         is DetailsUiState.Fetched -> DetailsScreen(state, modifier, onBackClicked)
     }
-    viewModel.getImageFor(picId)
+    val s = rememberUpdatedState(newValue = picId)
+    LaunchedEffect(s) {
+        viewModel.getImageFor(picId)
+    }
 }
 
 @Composable
