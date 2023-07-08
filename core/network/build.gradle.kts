@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     id("android.lib")
     id("android.hilt")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -19,6 +20,10 @@ android {
             )
         }
     }
+}
+
+secrets {
+    defaultPropertiesFileName = "secrets.defaults.properties"
 }
 
 dependencies {

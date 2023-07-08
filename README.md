@@ -2,7 +2,7 @@
 
 ## Build  :warning:
 
-:rotating_light: Before building the app, make sure to include your API_KEY at `Interceptors.API_KEY`. :rotating_light:
+:rotating_light: Before building the app, make sure to include your API_KEY at your local `local.properties` file.
 
 ## Architecture
 
