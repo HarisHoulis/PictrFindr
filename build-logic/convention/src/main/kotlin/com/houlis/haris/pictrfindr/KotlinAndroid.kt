@@ -12,7 +12,7 @@ private val PREFERRED_JAVA_VERSION = JavaVersion.VERSION_17
 
 internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, *, *, *>) {
     commonExtension.apply {
-        compileSdk = 33
+        compileSdk = 34
 
         defaultConfig {
             minSdk = 21
