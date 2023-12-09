@@ -3,6 +3,7 @@ plugins {
     id("android.lib")
     id("android.hilt")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    id("kotlin.test")
 }
 
 android {

@@ -1,5 +1,6 @@
 import com.android.build.api.dsl.LibraryExtension
 import com.houlis.haris.pictrfindr.configureAndroidCompose
+import com.houlis.haris.pictrfindr.configureKotlinAndroid
 import com.houlis.haris.pictrfindr.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -18,6 +19,7 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
 
             extensions.configure<LibraryExtension> {
                 configureAndroidCompose(this)
+                configureKotlinAndroid(this)
                 packaging {
                     resources {
                         excludes.add("META-INF/LICENSE.md")

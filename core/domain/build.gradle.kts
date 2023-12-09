@@ -2,6 +2,7 @@ plugins {
     id("android.lib")
     id("android.hilt")
     alias(libs.plugins.kotlin.serialization)
+    id("kotlin.test")
 }
 
 android {
