@@ -20,7 +20,6 @@ rootProject {
                 target("**/*.kt")
                 targetExclude("**/build/**/*.kt")
                 ktlint(ktlintVersion)
-                    .userData(mapOf("android" to "true"))
             }
             format("kts") {
                 target("**/*.kts")
