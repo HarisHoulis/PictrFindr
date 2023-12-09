@@ -43,5 +43,13 @@ gradlePlugin {
             id = "android.lib"
             implementationClass = "AndroidLibraryConventionPlugin"
         }
+        register("androidTest") {
+            id = "android.test"
+            implementationClass = "AndroidTestConventionPlugin"
+        }
+        register("kotlinTest") {
+            id = "kotlin.test"
+            implementationClass = "TestConventionPlugin"
+        }
     }
 }

@@ -7,6 +7,7 @@ androidxComposeCompiler = "1.5.6"
 androidxCore = "1.12.0"
 androidxDataStore = "1.0.0"
 androidxHiltNavigationCompose = "1.1.0"
+androidxJunit = "1.1.5"
 androidxLifecycle = "2.6.2"
 androidxNavigation = "2.7.5"
 androidSecrets = "2.0.1"
@@ -43,6 +44,7 @@ androidx-compose-ui-testManifest = { group = "androidx.compose.ui", name = "ui-t
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
 androidx-dataStore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "androidxDataStore" }
 androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidxHiltNavigationCompose" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
 androidx-lifecycle-runtimeCompose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
 androidx-lifecycle-viewModelCompose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
@@ -64,6 +66,7 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 kotest = { group = "io.kotest", name = "kotest-assertions-core", version.ref = "kotest" }
 junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
 junit5-bom = { group = "org.junit", name = "junit-bom", version.ref = "junit5Bom" }
+junit-jupiter-vintage = { module = "org.junit.vintage:junit-vintage-engine" }
 junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter" }
 okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
@@ -81,3 +84,21 @@ hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 android-secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "androidSecrets" }
+
+[bundles]
+android-test = [
+    "junit4",
+    "junit-jupiter",
+    "androidx-compose-ui-test",
+    "androidx-test-core",
+    "androidx-test-rules",
+    "androidx-test-runner",
+    "hilt-android-testing",
+    "androidx-junit"
+]
+test = [
+    "junit-jupiter",
+    "kotest",
+    "kotlinx-coroutines-test",
+    "turbine",
+]

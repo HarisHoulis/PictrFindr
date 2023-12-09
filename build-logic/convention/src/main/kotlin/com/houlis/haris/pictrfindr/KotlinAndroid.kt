@@ -25,8 +25,11 @@ internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, 
         }
 
         testOptions {
+            unitTests.isIncludeAndroidResources = true
             unitTests.all {
-                it.useJUnitPlatform()
+                it.useJUnitPlatform {
+                    includeEngines("junit-jupiter", "junit-vintage")
+                }
             }
         }
 
