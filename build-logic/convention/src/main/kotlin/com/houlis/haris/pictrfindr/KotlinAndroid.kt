@@ -35,6 +35,7 @@ internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, 
 
         dependencies {
             add("coreLibraryDesugaring", libs.findLibrary("android.desugarJdkLibs").get())
+            add("implementation", libs.findLibrary("org.jetbrains.kotlinx.kotlinx.collections.immutable").get())
         }
 
         configureKotlin()

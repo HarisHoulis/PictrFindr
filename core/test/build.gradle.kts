@@ -26,7 +26,7 @@ dependencies {
     implementation(project(":core:models"))
     implementation(project(":core:network"))
 
-    implementation(libs.kotlinx.coroutines.test)
+    implementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.test)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.result4k)
 

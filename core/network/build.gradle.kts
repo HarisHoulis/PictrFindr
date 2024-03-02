@@ -32,7 +32,7 @@ dependencies {
         implementation(project(":core:domain"))
         implementation(project(":core:models"))
         implementation(androidx.dataStore.preferences)
-        implementation(kotlinx.coroutines.android)
+        implementation(org.jetbrains.kotlinx.kotlinx.coroutines.android)
         implementation(kotlinx.serialization.json)
         implementation(okhttp.logging)
         implementation(retrofit.core)
