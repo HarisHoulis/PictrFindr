@@ -29,7 +29,7 @@ material3 = "1.2.0"
 okhttp = "4.12.0"
 retrofit = "2.9.0"
 retrofitKotlinxSerializationJson = "1.0.0"
-turbine = "1.0.0"
+turbine = "1.1.0"
 
 [libraries]
 android-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "androidDesugarJdkLibs" }
