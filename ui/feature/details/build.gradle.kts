@@ -8,9 +8,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:coroutines"))
-    implementation(project(":core:domain"))
-    implementation(project(":ui:common:mvi"))
+    implementation(projects.core.coroutines)
+    implementation(projects.core.domain)
+    implementation(projects.ui.common.mvi)
 
-    testImplementation(project(":ui:common:testutil"))
+    testImplementation(projects.ui.common.testutil)
 }

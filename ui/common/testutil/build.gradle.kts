@@ -9,8 +9,8 @@ android {
 dependencies {
     implementation(platform(libs.org.junit.junit.bom))
 
-    implementation(project(":ui:common:mvi"))
-    implementation(project(":core:coroutines"))
+    implementation(projects.ui.common.mvi)
+    implementation(projects.core.coroutines)
 
     implementation(libs.androidx.lifecycle.lifecycle.viewmodel.ktx)
     implementation(libs.bundles.test)

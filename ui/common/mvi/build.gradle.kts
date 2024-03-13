@@ -9,7 +9,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:coroutines"))
+    implementation(projects.core.coroutines)
     implementation(libs.androidx.lifecycle.lifecycle.viewmodel.ktx)
     implementation(libs.com.jakewharton.timber.timber)
     implementation(libs.bundles.compose)

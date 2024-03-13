@@ -17,7 +17,10 @@ dependencyResolutionManagement {
     }
 }
 
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 rootProject.name = "PictrFindr"
+
 include(":app")
 include(":core:coroutines")
 include(":core:dispatcher")
