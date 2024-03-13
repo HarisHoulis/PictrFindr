@@ -1,8 +1,9 @@
 package com.houlis.haris.core.domain
 
 import com.houlis.haris.test.data.provider.dummyPictureRaw1
-import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
+import strikt.api.expectThat
+import strikt.assertions.isEqualTo
 
 internal class PictureImageTest {
 
@@ -12,7 +13,7 @@ internal class PictureImageTest {
 
         val result = Picture.Image(imageBaseUrl, dummyPictureRaw1())
 
-        result.thumbnail shouldBe "${imageBaseUrl}65535/52663187230_3c0b1465a7_t.jpg"
-        result.large shouldBe "${imageBaseUrl}65535/52663187230_3c0b1465a7.jpg"
+        expectThat(result.thumbnail).isEqualTo("${imageBaseUrl}65535/52663187230_3c0b1465a7_t.jpg")
+        expectThat(result.large).isEqualTo("${imageBaseUrl}65535/52663187230_3c0b1465a7.jpg")
     }
 }

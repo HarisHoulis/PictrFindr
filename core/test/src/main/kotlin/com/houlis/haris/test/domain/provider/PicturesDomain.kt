@@ -15,28 +15,28 @@ fun dummyPictures() = listOf(
 
 fun dummyPicture1() =
     Picture(
-        id = "52663187230",
+        id = "dummyPicture1",
         image = Picture.Image(IMAGE_BASE_URL, dummyPictureRaw1()),
         title = Picture.Title("Donat")
     )
 
 fun dummyPicture2() =
     Picture(
-        id = "52662247857",
+        id = "dummyPicture2",
         image = Picture.Image(IMAGE_BASE_URL, dummyPictureRaw2()),
         title = Picture.Title("Donat")
     )
 
 fun dummyPicture3() =
     Picture(
-        id = "52663147230",
+        id = "dummyPicture3",
         image = Picture.Image(IMAGE_BASE_URL, dummyPictureRaw3()),
         title = Picture.Title("Hole")
     )
 
 fun dummyPicture4() =
     Picture(
-        id = "52662247857",
+        id = "dummyPicture4",
         image = Picture.Image(IMAGE_BASE_URL, dummyPictureRaw4()),
         title = Picture.Title("Hole")
     )

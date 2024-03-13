@@ -29,8 +29,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":feature:list"))
-    implementation(project(":feature:details"))
+    implementation(project(":ui:feature:list"))
+    implementation(project(":ui:feature:details"))
 }
 
 afterEvaluate {
@@ -38,7 +38,7 @@ afterEvaluate {
         .filter { task ->
             task.name.equals("clean", ignoreCase = true) ||
                     task.name.contains("assemble", ignoreCase = true)
-        }.forEach { task ->
+        }/*.forEach { task ->
             task.dependsOn(":installGitHooks")
-        }
+        }*/
 }

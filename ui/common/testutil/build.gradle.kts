@@ -12,5 +12,6 @@ dependencies {
     implementation(project(":ui:common:mvi"))
     implementation(project(":core:coroutines"))
 
+    implementation(libs.androidx.lifecycle.lifecycle.viewmodel.ktx)
     implementation(libs.bundles.test)
 }
