@@ -7,7 +7,7 @@ android {
 }
 
 dependencies {
-    implementation(platform(libs.junit5.bom))
+    implementation(platform(libs.org.junit.junit.bom))
 
     implementation(project(":ui:common:mvi"))
     implementation(project(":core:coroutines"))

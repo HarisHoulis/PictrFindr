@@ -16,7 +16,7 @@ dependencies {
     implementation(project(":core:domain"))
     implementation(project(":ui:common:mvi"))
 
-    implementation(libs.result4k)
+    implementation(libs.dev.forkhandles.result4k)
 
     testImplementation(project(":ui:common:testutil"))
 }

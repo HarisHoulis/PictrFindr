@@ -9,7 +9,7 @@ class TestConventionPlugin : Plugin<Project> {
         with(target) {
             dependencies {
                 add("testImplementation", kotlin("test"))
-                add("testImplementation", libs.findLibrary("androidx.compose.bom").get())
+                add("testImplementation", libs.findLibrary("androidx.compose.compose.bom").get())
                 add("testImplementation", libs.findBundle("test").get())
             }
         }

@@ -1,7 +1,7 @@
 plugins {
     id("android.lib")
     id("android.hilt")
-    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.org.jetbrains.kotlin.plugin.serialization)
 }
 
 android {
@@ -27,7 +27,7 @@ dependencies {
     implementation(project(":core:network"))
 
     implementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.test)
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.result4k)
+    implementation(libs.org.jetbrains.kotlinx.kotlinx.serialization.json)
+    implementation(libs.dev.forkhandles.result4k)
 
 }
