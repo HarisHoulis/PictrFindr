@@ -16,15 +16,12 @@ import com.houlis.haris.test.data.FakePicturesRepository.Query.Query1
 import com.houlis.haris.test.domain.provider.dummyPicture1
 import com.houlis.haris.test.domain.provider.dummyPicture2
 import kotlinx.collections.immutable.persistentListOf
-import kotlinx.coroutines.test.TestScope
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import org.junit.jupiter.api.Test
 import java.time.Duration
 
 internal class PicturesViewModelTest {
 
-    private val coroutineScope = TestScope(UnconfinedTestDispatcher())
-    private val scope = TestCloseableScope(coroutineScope.backgroundScope)
+    private val scope = TestCloseableScope()
 
     private fun picturesRepository() = FakePicturesRepository()
 
@@ -38,14 +35,14 @@ internal class PicturesViewModelTest {
     }
 
     @Test
-    fun `loads pictures`() = with(coroutineScope) {
+    fun `loads pictures`() {
         sut().assertStatesFor(PicturesState(), expectedLoadingState, expectedLoadedState) {
             searchFor(Query1.text)
         }
     }
 
     @Test
-    fun `reports error when failing to load pictures`() = with(coroutineScope) {
+    fun `reports error when failing to load pictures`() {
         sut(picturesRepository().apply { throwException() }).assertStatesFor(
             PicturesState(),
             expectedLoadingState,
@@ -56,7 +53,7 @@ internal class PicturesViewModelTest {
     }
 
     @Test
-    fun `reports no results`() = with(coroutineScope) {
+    fun `reports no results`() {
         sut(picturesRepository().apply { setEmptyResponse() }).assertStatesFor(
             PicturesState(),
             expectedLoadingState,

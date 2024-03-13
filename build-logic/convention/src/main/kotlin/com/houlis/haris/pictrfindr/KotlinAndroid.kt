@@ -54,8 +54,7 @@ private fun Project.configureKotlin() {
             freeCompilerArgs = freeCompilerArgs + listOf(
                 "-opt-in=kotlin.RequiresOptIn",
                 "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
-                "-opt-in=kotlinx.coroutines.FlowPreview",
-                "-Xcontext-receivers"
+                "-opt-in=kotlinx.coroutines.FlowPreview"
             )
         }
     }
