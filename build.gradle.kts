@@ -15,8 +15,8 @@ plugins {
     alias(libs.plugins.android.secrets) apply false
 }
 
-//tasks.register<Copy>("installGitHooks") {
-//    from(layout.projectDirectory.dir("scripts/hooks"))
-//    into(File(rootDir, "/.git/hooks"))
-//    fileMode = 775
-//}
+tasks.register<Copy>("installGitHooks") {
+    from(layout.projectDirectory.dir("scripts/hooks"))
+    into(File(rootDir, "/.git/hooks"))
+    fileMode = 775
+}

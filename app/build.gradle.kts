@@ -38,7 +38,7 @@ afterEvaluate {
         .filter { task ->
             task.name.equals("clean", ignoreCase = true) ||
                     task.name.contains("assemble", ignoreCase = true)
-        }/*.forEach { task ->
+        }.forEach { task ->
             task.dependsOn(":installGitHooks")
-        }*/
+        }
 }
