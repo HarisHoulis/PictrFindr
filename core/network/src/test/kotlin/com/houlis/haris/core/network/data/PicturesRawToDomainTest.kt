@@ -4,8 +4,9 @@ import com.houlis.haris.core.domain.Picture
 import com.houlis.haris.test.data.provider.dummyPictureRaw1
 import com.houlis.haris.test.data.provider.dummyPictureRaw2
 import com.houlis.haris.test.data.provider.dummyPicturesResponseRaw
-import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
+import strikt.api.expectThat
+import strikt.assertions.isEqualTo
 
 internal class PicturesRawToDomainTest {
 
@@ -17,7 +18,7 @@ internal class PicturesRawToDomainTest {
     fun `maps raw model to domain one`() {
         val result = dummyPicturesResponseRaw().toDomain(IMAGE_BASE_URL)
 
-        result shouldBe expectedDomainModels()
+        expectThat(result).isEqualTo(expectedDomainModels())
     }
 
     private fun expectedDomainModels() = listOf(

@@ -29,8 +29,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":feature:list"))
-    implementation(project(":feature:details"))
+    implementation(project(":ui:feature:list"))
+    implementation(project(":ui:feature:details"))
 }
 
 afterEvaluate {

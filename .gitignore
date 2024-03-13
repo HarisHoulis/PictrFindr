@@ -103,3 +103,5 @@ lint/tmp/
 .idea/codeStyles/Project.xml
 
 .idea/codeStyles/codeStyleConfig.xml
+/.idea/dbnavigator.xml
+/.idea/deploymentTargetSelector.xml

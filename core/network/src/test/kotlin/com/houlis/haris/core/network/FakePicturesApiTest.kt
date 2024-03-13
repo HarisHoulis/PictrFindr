@@ -2,11 +2,12 @@ package com.houlis.haris.core.network
 
 import com.houlis.haris.test.data.FakePicturesApi
 import com.houlis.haris.test.data.provider.dummyPicturesResponseRaw
-import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.Json
 import org.junit.jupiter.api.Test
+import strikt.api.expectThat
+import strikt.assertions.isEqualTo
 
 internal class FakePicturesApiTest {
 
@@ -21,6 +22,6 @@ internal class FakePicturesApiTest {
     fun `maps api response`() = runTest(testDispatcher) {
         val result = testedClass().searchFor("dog")
 
-        result shouldBe expectedPicturesResponse
+        expectThat(result).isEqualTo(expectedPicturesResponse)
     }
 }
