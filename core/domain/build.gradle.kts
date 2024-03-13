@@ -23,9 +23,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:models"))
+    implementation(projects.core.models)
     implementation(libs.dev.forkhandles.result4k)
     implementation(libs.org.jetbrains.kotlinx.kotlinx.serialization.json)
 
-    testImplementation(project(":core:test"))
+    testImplementation(projects.core.test)
 }

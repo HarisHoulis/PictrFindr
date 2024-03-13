@@ -29,8 +29,8 @@ secrets {
 
 dependencies {
     with(libs) {
-        implementation(project(":core:domain"))
-        implementation(project(":core:models"))
+        implementation(projects.core.domain)
+        implementation(projects.core.models)
         implementation(androidx.datastore.datastore.preferences)
         implementation(org.jetbrains.kotlinx.kotlinx.coroutines.android)
         implementation(org.jetbrains.kotlinx.kotlinx.serialization.json)
@@ -39,6 +39,6 @@ dependencies {
         implementation(com.jakewharton.retrofit.retrofit2.kotlinx.serialization.converter)
         implementation(dev.forkhandles.result4k)
 
-        testImplementation(project(":core:test"))
+        testImplementation(projects.core.test)
     }
 }

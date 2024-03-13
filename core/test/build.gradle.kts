@@ -22,9 +22,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:domain"))
-    implementation(project(":core:models"))
-    implementation(project(":core:network"))
+    implementation(projects.core.domain)
+    implementation(projects.core.models)
+    implementation(projects.core.network)
 
     implementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.test)
     implementation(libs.org.jetbrains.kotlinx.kotlinx.serialization.json)
