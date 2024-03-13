@@ -13,16 +13,16 @@ class AndroidTestConventionPlugin : Plugin<Project> {
             }
 
             dependencies {
-                add("debugImplementation", libs.findLibrary("androidx.compose.bom").get())
-                add("debugImplementation", libs.findLibrary("androidx.compose.ui.testManifest").get())
+                add("debugImplementation", libs.findLibrary("androidx.compose.compose.bom").get())
+                add("debugImplementation", libs.findLibrary("androidx-compose-ui-ui-test-manifest").get())
 
-                add("testImplementation", platform(libs.findLibrary("junit5-bom").get()))
-                add("testImplementation", platform(libs.findLibrary("androidx.compose.bom").get()))
+                add("testImplementation", platform(libs.findLibrary("org.junit.junit.bom").get()))
+                add("testImplementation", platform(libs.findLibrary("androidx.compose.compose.bom").get()))
                 add("testImplementation", libs.findBundle("android-test").get())
 
                 add("androidTestImplementation", kotlin("test"))
-                add("androidTestImplementation", platform(libs.findLibrary("junit5-bom").get()))
-                add("testRuntimeOnly", libs.findLibrary("junit-jupiter-vintage").get())
+                add("androidTestImplementation", platform(libs.findLibrary("org.junit.junit.bom").get()))
+                add("testRuntimeOnly", libs.findLibrary("org.junit.jupiter.junit.jupiter").get())
                 add("androidTestImplementation", libs.findBundle("android-test").get())
             }
         }

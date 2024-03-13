@@ -31,11 +31,11 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
             dependencies {
                 "implementation"(project(":core:network"))
                 "implementation"(project(":core:design"))
-                "implementation"(libs.findLibrary("androidx.hilt.navigation.compose").get())
+                "implementation"(libs.findLibrary("androidx.hilt.hilt.navigation.compose").get())
                 "implementation"(libs.findLibrary("androidx.lifecycle.lifecycle.runtime.compose").get())
-                "implementation"(libs.findLibrary("androidx.lifecycle.viewModelCompose").get())
-                "implementation"(libs.findLibrary("coil.kt").get())
-                "implementation"(libs.findLibrary("coil.kt.compose").get())
+                "implementation"(libs.findLibrary("androidx.lifecycle.lifecycle.viewmodel.compose").get())
+                "implementation"(libs.findLibrary("io.coil.kt").get())
+                "implementation"(libs.findLibrary("io.coil.kt.coil.compose").get())
                 "implementation"(libs.findLibrary("org.jetbrains.kotlinx.kotlinx.coroutines.android").get())
 
                 "testImplementation"(project(":core:test"))

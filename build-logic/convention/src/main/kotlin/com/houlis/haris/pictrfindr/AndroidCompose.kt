@@ -11,7 +11,8 @@ internal fun Project.configureAndroidCompose(commonExtension: CommonExtension<*,
         }
 
         composeOptions {
-            kotlinCompilerExtensionVersion = project.libs.findVersion("androidxComposeCompiler").get().toString()
+            kotlinCompilerExtensionVersion =
+                project.libs.findVersion("androidx.kotlin.compose.compiler.version").get().toString()
         }
 
         testOptions {
@@ -21,12 +22,12 @@ internal fun Project.configureAndroidCompose(commonExtension: CommonExtension<*,
         }
 
         dependencies {
-            val bom = libs.findLibrary("androidx-compose-bom").get()
+            val bom = libs.findLibrary("androidx.compose.compose.bom").get()
             add("implementation", platform(bom))
-            add("implementation", libs.findLibrary("androidx.activity.compose").get())
+            add("implementation", libs.findLibrary("androidx.activity.activity.compose").get())
             add("implementation", libs.findLibrary("androidx.compose.material3.material3").get())
             add("implementation", libs.findLibrary("androidx.compose.ui.ui").get())
-            add("implementation", libs.findLibrary("androidx.navigation.compose").get())
+            add("implementation", libs.findLibrary("androidx.navigation.navigation.compose").get())
         }
     }
 }

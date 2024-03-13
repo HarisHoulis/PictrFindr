@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.org.jetbrains.kotlin.plugin.serialization)
     id("android.lib")
     id("android.hilt")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
@@ -31,13 +31,13 @@ dependencies {
     with(libs) {
         implementation(project(":core:domain"))
         implementation(project(":core:models"))
-        implementation(androidx.dataStore.preferences)
+        implementation(androidx.datastore.datastore.preferences)
         implementation(org.jetbrains.kotlinx.kotlinx.coroutines.android)
-        implementation(kotlinx.serialization.json)
-        implementation(okhttp.logging)
-        implementation(retrofit.core)
-        implementation(retrofit.kotlin.serialization)
-        implementation(libs.result4k)
+        implementation(org.jetbrains.kotlinx.kotlinx.serialization.json)
+        implementation(com.squareup.okhttp3.logging.interceptor)
+        implementation(com.squareup.retrofit2.retrofit)
+        implementation(com.jakewharton.retrofit.retrofit2.kotlinx.serialization.converter)
+        implementation(dev.forkhandles.result4k)
 
         testImplementation(project(":core:test"))
     }
