@@ -21,29 +21,31 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
+import com.houlis.haris.core.domain.Picture.Image
 import com.houlis.haris.pictrfindr.feature.details.R
 import com.houlis.haris.core.design.R as DesignR
 
 @Composable
-fun DetailsRoute(
+internal fun DetailsRoute(
     picId: String,
     modifier: Modifier = Modifier,
     viewModel: DetailsViewModel = hiltViewModel(),
     onBackClicked: () -> Unit,
 ) {
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    when (val state = uiState) {
-        DetailsUiState.Loading -> Loading(modifier)
-        is DetailsUiState.Fetched -> DetailsScreen(state, modifier, onBackClicked)
-    }
+    val state by viewModel.state.collectAsStateWithLifecycle()
+
+    state.pic?.let { pic ->
+        DetailsScreen(pic, modifier, onBackClicked)
+    } ?: Loading(modifier)
+
     val s = rememberUpdatedState(newValue = picId)
     LaunchedEffect(s) {
-        viewModel.getImageFor(picId)
+        viewModel.detailsFor(picId)
     }
 }
 
 @Composable
-fun DetailsScreen(uiState: DetailsUiState.Fetched, modifier: Modifier = Modifier, onBackClicked: () -> Unit) {
+internal fun DetailsScreen(pic: Image, modifier: Modifier = Modifier, onBackClicked: () -> Unit) {
     Column(modifier = modifier) {
         Icon(
             imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
@@ -57,7 +59,7 @@ fun DetailsScreen(uiState: DetailsUiState.Fetched, modifier: Modifier = Modifier
             modifier = modifier.fillMaxSize()
         ) {
             AsyncImage(
-                model = uiState.image.large,
+                model = pic.large,
                 contentDescription = stringResource(R.string.large_image_ctd),
                 modifier = Modifier
                     .size(dimensionResource(DesignR.dimen.large_image_size))

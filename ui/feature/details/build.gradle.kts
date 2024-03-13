@@ -8,6 +8,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:coroutines"))
     implementation(project(":core:domain"))
     implementation(project(":ui:common:mvi"))
+
+    testImplementation(project(":ui:common:testutil"))
 }

@@ -1,8 +1,23 @@
 package com.houlis.haris.feature.details.ui
 
-import com.houlis.haris.core.domain.Picture
+import androidx.compose.runtime.Immutable
+import com.houlis.haris.core.domain.Picture.Image
+import com.houlis.haris.feature.details.ui.LoadState.Idle
+import com.houlis.haris.pictrfindr.ui.common.mvi.State
 
-sealed interface DetailsUiState {
-    data class Fetched(val image: Picture.Image) : DetailsUiState
-    object Loading : DetailsUiState
+internal enum class LoadState {
+    Idle, Loading, Loaded, NoResults, Error,
+}
+
+@Immutable
+internal data class DetailsState(
+    val loadState: LoadState,
+    val pic: Image?,
+) : State {
+    companion object {
+        operator fun invoke() = DetailsState(
+            loadState = Idle,
+            pic = null
+        )
+    }
 }
