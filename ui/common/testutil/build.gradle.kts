@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.houlis.haris.pictrfindr.ui.common.testutil"
+    namespace = "com.houlis.haris.picfind.ui.common.testutil"
 }
 
 dependencies {

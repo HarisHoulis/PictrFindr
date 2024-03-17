@@ -1,7 +1,7 @@
 import com.android.build.api.dsl.LibraryExtension
-import com.houlis.haris.pictrfindr.configureAndroidCompose
-import com.houlis.haris.pictrfindr.configureKotlinAndroid
-import com.houlis.haris.pictrfindr.libs
+import com.houlis.haris.picfind.configureAndroidCompose
+import com.houlis.haris.picfind.configureKotlinAndroid
+import com.houlis.haris.picfind.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure

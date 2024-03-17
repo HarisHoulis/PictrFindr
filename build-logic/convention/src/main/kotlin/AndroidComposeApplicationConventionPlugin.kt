@@ -1,5 +1,5 @@
 import com.android.build.api.dsl.ApplicationExtension
-import com.houlis.haris.pictrfindr.configureAndroidCompose
+import com.houlis.haris.picfind.configureAndroidCompose
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.getByType

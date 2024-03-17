@@ -1,4 +1,4 @@
-import com.houlis.haris.pictrfindr.libs
+import com.houlis.haris.picfind.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies

@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.houlis.haris.pictrfindr.feature.list"
+    namespace = "com.houlis.haris.picfind.feature.list"
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

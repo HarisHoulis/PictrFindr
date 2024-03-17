@@ -4,7 +4,7 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "com.houlis.haris.pictrfindr.buildlogic"
+group = "com.houlis.haris.picfind.buildlogic"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
