@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.houlis.haris.core.domain"
+    namespace = "com.houlis.haris.picfind.core.domain"
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

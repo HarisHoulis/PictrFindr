@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.houlis.haris.pictrfindr.feature.details"
+    namespace = "com.houlis.haris.picfind.feature.details"
 }
 
 dependencies {

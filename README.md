@@ -1,4 +1,4 @@
-# PictrFindr App
+# PicFind App
 
 ## Build  :warning:
 

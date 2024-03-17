@@ -5,10 +5,10 @@ plugins {
 }
 
 android {
-    namespace = "com.houlis.haris.pictrfindr"
+    namespace = "com.houlis.haris.picfind"
 
     defaultConfig {
-        applicationId = "com.houlis.haris.pictrfindr"
+        applicationId = "com.houlis.haris.picfind"
         minSdk = 22
         versionCode = 1
         versionName = "1.0"

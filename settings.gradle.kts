@@ -19,7 +19,7 @@ dependencyResolutionManagement {
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-rootProject.name = "PictrFindr"
+rootProject.name = "PicFind"
 
 include(":app")
 include(":core:coroutines")
