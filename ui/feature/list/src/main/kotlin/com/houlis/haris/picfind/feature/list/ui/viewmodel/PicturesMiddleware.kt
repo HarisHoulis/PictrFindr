@@ -5,6 +5,8 @@ import com.houlis.haris.picfind.core.domain.Picture
 import com.houlis.haris.picfind.core.domain.PicturesRepositoryContract
 import com.houlis.haris.picfind.feature.list.ui.viewmodel.PicturesAction.Error
 import com.houlis.haris.picfind.feature.list.ui.viewmodel.PicturesAction.NoResults
+import com.houlis.haris.picfind.feature.list.ui.viewmodel.PicturesAction.OnPictureClicked
+import com.houlis.haris.picfind.feature.list.ui.viewmodel.PicturesAction.PictureSaved
 import com.houlis.haris.picfind.feature.list.ui.viewmodel.PicturesAction.PicturesLoaded
 import com.houlis.haris.picfind.feature.list.ui.viewmodel.PicturesAction.SearchFor
 import com.houlis.haris.picfind.ui.common.mvi.Dispatcher
@@ -33,6 +35,7 @@ internal class PicturesMiddleware(
     override suspend fun process(state: PicturesState, action: PicturesAction) {
         when (action) {
             is SearchFor -> searchFlow.emit(action.query)
+            is OnPictureClicked -> repository.save(action.picture).also { dispatch(PictureSaved(action.picture)) }
             else -> {}
         }
     }

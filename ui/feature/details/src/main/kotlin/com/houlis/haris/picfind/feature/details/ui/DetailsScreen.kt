@@ -11,9 +11,7 @@ import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
@@ -27,7 +25,6 @@ import com.houlis.haris.picfind.core.design.R as DesignR
 
 @Composable
 internal fun DetailsRoute(
-    picId: String,
     modifier: Modifier = Modifier,
     viewModel: DetailsViewModel = hiltViewModel(),
     onBackClicked: () -> Unit,
@@ -37,15 +34,10 @@ internal fun DetailsRoute(
     state.pic?.let { pic ->
         DetailsScreen(pic, modifier, onBackClicked)
     } ?: Loading(modifier)
-
-    val s = rememberUpdatedState(newValue = picId)
-    LaunchedEffect(s) {
-        viewModel.detailsFor(picId)
-    }
 }
 
 @Composable
-internal fun DetailsScreen(pic: Image, modifier: Modifier = Modifier, onBackClicked: () -> Unit) {
+private fun DetailsScreen(pic: Image, modifier: Modifier = Modifier, onBackClicked: () -> Unit) {
     Column(modifier = modifier) {
         Icon(
             imageVector = Icons.AutoMirrored.Rounded.ArrowBack,

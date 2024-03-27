@@ -1,5 +1,6 @@
 package com.houlis.haris.picfind.feature.list.ui
 
+import com.houlis.haris.picfind.core.data.SaveState
 import com.houlis.haris.picfind.core.domain.PicturesRepositoryContract
 import com.houlis.haris.picfind.feature.list.ui.viewmodel.LoadState.Error
 import com.houlis.haris.picfind.feature.list.ui.viewmodel.LoadState.Loaded
@@ -16,23 +17,38 @@ import com.houlis.haris.picfind.test.domain.provider.dummyPicture2
 import com.houlis.haris.picfind.ui.common.testutil.TestCloseableScope
 import com.houlis.haris.picfind.ui.common.testutil.assertStatesFor
 import kotlinx.collections.immutable.persistentListOf
+import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Test
+import strikt.api.expectThat
+import strikt.assertions.hasEntry
+import strikt.assertions.hasSize
+import strikt.assertions.isEqualTo
 import java.time.Duration
 
 internal class PicturesViewModelTest {
 
+    companion object {
+        private const val PIC_ID_ARG = "PIC_ID"
+    }
+
     private val scope = TestCloseableScope()
+
+    private val savedStates = mutableMapOf<String, String>()
+    private val saveState = SaveState(savedStates::put)
 
     private fun picturesRepository() = FakePicturesRepository()
 
     private fun sut(repo: PicturesRepositoryContract = picturesRepository()) = PicturesViewModel(
-        scope,
-        PicturesReducer()
-    ) { dispatcher ->
-        listOf(
-            PicturesMiddleware(repo, Duration.ofMillis(0), dispatcher, scope)
-        )
-    }
+        picIdArg = Companion.PIC_ID_ARG,
+        saveState = saveState,
+        scope = scope,
+        reducer = PicturesReducer(),
+        mwProvider = { dispatcher ->
+            listOf(
+                PicturesMiddleware(repo, Duration.ofMillis(0), dispatcher, scope)
+            )
+        }
+    )
 
     @Test
     fun `loads pictures`() {
@@ -62,6 +78,28 @@ internal class PicturesViewModelTest {
             searchFor(Query1.text)
         }
     }
+
+    @Test
+    fun `navigates to details screen`() = runTest {
+        val picturesRepository = picturesRepository()
+
+        sut(picturesRepository).assertStatesFor(
+            PicturesState(),
+            expectedLoadingState,
+            expectedLoadedState,
+            expectedOnPicClickedState
+        ) {
+            searchFor(Query1.text)
+            onPictureClicked(dummyPicture1())
+        }
+
+        expectThat(savedStates)
+            .hasSize(1)
+            .hasEntry(PIC_ID_ARG, dummyPicture1().id)
+
+        expectThat(picturesRepository.retrieve(dummyPicture1().id))
+            .isEqualTo(dummyPicture1())
+    }
 }
 
 private val expectedLoadingState = PicturesState(
@@ -86,4 +124,10 @@ private val expectedNoResultsState = PicturesState(
     NoResults,
     persistentListOf(),
     null
+)
+
+private val expectedOnPicClickedState = PicturesState(
+    Loaded,
+    persistentListOf(dummyPicture1(), dummyPicture2()),
+    dummyPicture1()
 )

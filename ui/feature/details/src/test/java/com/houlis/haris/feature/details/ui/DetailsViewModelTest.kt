@@ -1,5 +1,6 @@
 package com.houlis.haris.feature.details.ui
 
+import com.houlis.haris.picfind.core.data.ReadState
 import com.houlis.haris.picfind.feature.details.ui.DetailsMiddleware
 import com.houlis.haris.picfind.feature.details.ui.DetailsReducer
 import com.houlis.haris.picfind.feature.details.ui.DetailsState
@@ -13,24 +14,28 @@ import org.junit.jupiter.api.Test
 
 internal class DetailsViewModelTest {
 
+    private val readState = ReadState<String> {
+        dummyPicture1().id
+    }
+
     private val scope = TestCloseableScope()
     private val sut = DetailsViewModel(
-        scope,
-        DetailsReducer()
-    ) { dispatcher ->
-        listOf(DetailsMiddleware(FakePicturesRepository(), dispatcher, scope))
-    }
+        readState = readState,
+        scope = scope,
+        reducer = DetailsReducer(),
+        mwProvider = { dispatcher ->
+            listOf(DetailsMiddleware(FakePicturesRepository(), dispatcher, scope))
+        }
+    )
 
     @Test
     fun `fetches picture's details`() {
-        with(scope) {
-            sut.assertStatesFor(
-                DetailsState(),
-                DetailsState(LoadState.Loading, null),
-                DetailsState(LoadState.Loaded, dummyPicture1().image)
-            ) {
-                detailsFor("any")
-            }
+        sut.assertStatesFor(
+            DetailsState(),
+            DetailsState(LoadState.Loading, null),
+            DetailsState(LoadState.Loaded, dummyPicture1().image)
+        ) {
         }
+
     }
 }

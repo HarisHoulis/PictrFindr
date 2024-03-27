@@ -23,6 +23,7 @@ rootProject.name = "PicFind"
 
 include(":app")
 include(":core:coroutines")
+include(":core:data")
 include(":core:dispatcher")
 include(":core:design")
 include(":core:domain")
@@ -32,4 +33,5 @@ include(":core:test")
 include(":ui:feature:details")
 include(":ui:feature:list")
 include(":ui:common:mvi")
+include(":ui:common:navigation")
 include(":ui:common:testutil")

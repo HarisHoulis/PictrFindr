@@ -23,6 +23,8 @@ class FakePicturesRepository : PicturesRepositoryContract {
 
     private var returnEmptyResponse: Boolean = false
 
+    private val savedPics = mutableMapOf<String, Picture>()
+
     fun setEmptyResponse() {
         exception = null
         returnEmptyResponse = true
@@ -49,10 +51,10 @@ class FakePicturesRepository : PicturesRepositoryContract {
     }
 
     override suspend fun save(picture: Picture) {
-        // NO-OP
+        savedPics[picture.id] = picture
     }
 
-    override suspend fun retrieve(picId: String): Picture = dummyPicture1()
+    override suspend fun retrieve(picId: String): Picture = savedPics.getValue(picId)
 
     enum class Query(val text: String) {
         Query1("donut"), Query2("hole")

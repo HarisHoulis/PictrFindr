@@ -29,6 +29,7 @@ android {
 }
 
 dependencies {
+    implementation(projects.ui.common.navigation)
     implementation(projects.ui.feature.list)
     implementation(projects.ui.feature.details)
 }
